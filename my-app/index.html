@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samfa Investments Limited – Premium Office & Lifestyle Solutions</title>
+  <meta name="description"
+    content="Uganda's premier supplier of stationery, office supplies, catering, agro products, electronics & electrical, and cosmology solutions.">
+  <meta property="og:title" content="Samfa Investments Limited">
+  <meta property="og:description" content="Premium Office & Lifestyle Solutions in Uganda">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--deep);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      animation: heroZoom 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from {
+        transform: scale(1.05);
+      }
+
+      to {
+        transform: scale(1.12);
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 60%, rgba(10, 10, 10, 0.3) 100%);
+    }
+
+    .hero-gold-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 50px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-tag::before {
+      content: '✦';
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+
+    /* ---- FEATURES BAR ---- */
+    .features-bar {
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      divide-x: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .feature-item {
+      padding: 32px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+    }
+
+    .feature-item:hover {
+      background: rgba(201, 168, 76, 0.04);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+
+    .feature-item h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .feature-item p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ---- CATEGORIES ---- */
+    .categories-section {
+      background: var(--ivory);
+    }
+
+    .cats-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .cat-card {
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 32px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .cat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border);
+    }
+
+    .cat-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .cat-icon {
+      font-size: 36px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .cat-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .cat-card p {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ---- FEATURED PRODUCTS ---- */
+    .products-section {
+      background: var(--cream);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    /* ---- PROMO BANNER ---- */
+    .promo-banner {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=60') center/cover;
+      opacity: 0.08;
+    }
+
+    .promo-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 80px 0;
+    }
+
+    .promo-badge {
+      background: var(--gold);
+      color: #fff;
+      font-size: 48px;
+      font-weight: 900;
+      font-family: 'Playfair Display', serif;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      flex-shrink: 0;
+      line-height: 1;
+      box-shadow: 0 0 0 12px rgba(201, 168, 76, 0.15);
+    }
+
+    .promo-badge small {
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .promo-content h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin-bottom: 12px;
+    }
+
+    .promo-content p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    /* ---- ABOUT PREVIEW ---- */
+    .about-preview {
+      background: var(--ivory);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: 30px;
+      right: -20px;
+      background: var(--gold);
+      color: #fff;
+      padding: 24px 28px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-img-badge strong {
+      display: block;
+      font-size: 40px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .about-img-badge span {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+
+    .about-text .section-label {
+      margin-bottom: 16px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 36px 0;
+    }
+
+    .stat-item {
+      padding: 20px;
+      background: var(--cream);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .stat-item strong {
+      display: block;
+      font-size: 28px;
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+    }
+
+    .stat-item span {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ---- REVEAL ANIM ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 1100px) {
+      .cats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-img-badge {
+        right: 10px;
+      }
+
+      .promo-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar"></header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-gold-line"></div>
+    <div class="container">
+      <div class="hero-content">
+        <!-- <div class="hero-tag">Uganda's Premium Business Partner</div> -->
+        <h1>Premium Office &<span>Lifestyle Solutions</span></h1>
+        <p>Samfa Investments Limited delivers exceptional quality across stationery, office supplies, catering,
+          agro products, electronics, and cosmology — empowering businesses and homes across Uganda.</p>
+        <div class="hero-cta">
+          <a href="products.html" class="btn btn-gold">Shop Now →</a>
+          <a href="services.html" class="btn btn-outline">Explore Services</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <span>↓</span>
+    </div>
+  </section>
+
+  <!-- FEATURES BAR -->
+  <div class="features-bar">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item reveal">
+          <span class="feature-icon">🚚</span>
+          <div>
+            <h4>Fast Delivery</h4>
+            <p>Nationwide delivery across Uganda</p>
+          </div>
+        </div>
+        <div class="feature-item reveal">
+          <span class="feature-icon">🏆</span>
+          <div>
+            <h4>Quality Assured</h4>
+            <p>Certified premium products only</p>
+          </div>
+        </div>
+        <div class="feature-item reveal">
+          <span class="feature-icon">🤝</span>
+          <div>
+            <h4>24/7 Support</h4>
+            <p>Dedicated customer care team</p>
+          </div>
+        </div>
+        <div class="feature-item reveal">
+          <span class="feature-icon">💰</span>
+          <div>
+            <h4>Best Prices</h4>
+            <p>Competitive & transparent pricing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="categories-section section-pad">
+    <div class="container">
+      <div style="text-align:center; max-width:560px; margin:0 auto">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Browse Our Categories</h2>
+        <p class="section-subtitle">From office essentials to farm produce, we've got everything your business
+          needs under one roof.</p>
+      </div>
+      <div class="cats-grid">
+        <a href="products.html?cat=Stationery" class="cat-card reveal">
+          <span class="cat-icon">✏️</span>
+          <h3>Stationery</h3>
+          <p>Pens, notebooks & more</p>
+        </a>
+        <a href="products.html?cat=Office Supplies" class="cat-card reveal">
+          <span class="cat-icon">🗂️</span>
+          <h3>Office Supplies</h3>
+          <p>Desks, chairs & equipment</p>
+        </a>
+        <a href="products.html?cat=Catering Services" class="cat-card reveal">
+          <span class="cat-icon">🍽️</span>
+          <h3>Catering</h3>
+          <p>Food & beverage supplies</p>
+        </a>
+        <a href="products.html?cat=Agro Products" class="cat-card reveal">
+          <span class="cat-icon">🌾</span>
+          <h3>Agro Products</h3>
+          <p>Grains, seeds & farm supplies</p>
+        </a>
+        <a href="products.html?cat=Electronics & Electrical" class="cat-card reveal">
+          <span class="cat-icon">⚡</span>
+          <h3>Electronics & Electrical</h3>
+          <p>Devices & installation</p>
+        </a>
+        <a href="products.html?cat=Cosmology" class="cat-card reveal">
+          <span class="cat-icon">💄</span>
+          <h3>Cosmology</h3>
+          <p>Beauty & skincare essentials</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="products-section section-pad">
+    <div class="container">
+      <div
+        style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:56px">
+        <div>
+          <div class="section-label">Handpicked For You</div>
+          <h2 class="section-title">Featured Products</h2>
+        </div>
+        <a href="products.html" class="btn btn-outline btn-sm">View All Products →</a>
+      </div>
+      <div class="products-grid" id="featuredGrid">
+        <!-- Loaded by JS -->
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO BANNER -->
+  <section class="promo-banner">
+    <div class="container">
+      <div class="promo-inner">
+        <div class="promo-badge reveal">
+          20%<small>OFF</small>
+        </div>
+        <div class="promo-content reveal">
+          <h2>Save 20% This Week on All Office Supplies</h2>
+          <p>Stock up on premium stationery, furniture, and electronics for your office. Limited-time offer
+            valid while stocks last.</p>
+          <a href="products.html?cat=Office Supplies" class="btn btn-gold">Claim Discount →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PREVIEW -->
+  <section class="about-preview section-pad">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=700&q=80"
+            alt="Samfa Investments Office">
+          <div class="about-img-badge">
+            <strong>10+</strong>
+            <span>Years of Excellence</span>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">Who We Are</div>
+          <h2 class="section-title">Samfa Investments Limited</h2>
+          <p style="color:var(--text-muted); line-height:1.8; margin-bottom:20px">We are a Ugandan company
+            committed to delivering premium quality products and services to businesses, institutions, and
+            households across the country. From our base in Iganga, we serve clients nationwide with
+            reliability and excellence.</p>
+          <p style="color:var(--text-muted); line-height:1.8">Our diverse portfolio spans stationery, office
+            supplies, catering services, agro products, electronics, and cosmology — making us your one-stop
+            business partner.</p>
+          <div class="about-stats">
+            <div class="stat-item"><strong>500+</strong><span>Products Available</span></div>
+            <div class="stat-item"><strong>1,200+</strong><span>Happy Clients</span></div>
+            <div class="stat-item"><strong>6</strong><span>Product Categories</span></div>
+            <div class="stat-item"><strong>100%</strong><span>Quality Guaranteed</span></div>
+          </div>
+          <a href="about.html" class="btn btn-dark">Learn More About Us →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer"></footer>
+
+  <script  type="module" src="js/main.js"></script>
+  <script>
+    // Load featured products
+    async function loadFeatured() {
+      const grid = document.getElementById('featuredGrid');
+      try {
+        // Try Firebase, fallback to samples
+        let products = [];
+        try {
+          const { getProducts } = await import('./js/firebase-config.js');
+          products = await getProducts();
+        } catch {
+          const { getSampleProducts } = await import('./js/firebase-config.js');
+          products = getSampleProducts();
+        }
+        const featured = products.slice(0, 8);
+        grid.innerHTML = featured.map(buildProductCard).join('');
+        setTimeout(initObserver, 50);
+      } catch (e) {
+        // Static fallback
+        const samples = [
+          { id: "1", name: "Executive Notebook Set", price: 45000, category: "Stationery", image: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=80", badge: "Best Seller" },
+          { id: "2", name: "Premium Ballpoint Pens", price: 18000, category: "Stationery", image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80", badge: "New" },
+          { id: "3", name: "Ergonomic Office Chair", price: 580000, category: "Office Supplies", image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=400&q=80", badge: "Sale" },
+          { id: "4", name: "Luxury Perfume Set", price: 165000, category: "Cosmology", image: "https://images.unsplash.com/photo-1541643600914-78b084683702?w=400&q=80", badge: "Premium" },
+        ];
+        grid.innerHTML = samples.map(buildProductCard).join('');
+        setTimeout(initObserver, 50);
+      }
+    }
+    loadFeatured();
+  </script>
+</body>
+
+</html>

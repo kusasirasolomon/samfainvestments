@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard – Samfa Investments</title>
+    <!-- NO INDEXING - admin is private -->
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0D1117;
+            --surface: #161B22;
+            --surface2: #1C2128;
+            --border: rgba(255, 255, 255, 0.08);
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --text: #E6EDF3;
+            --muted: #7D8590;
+            --green: #3FB950;
+            --red: #F85149;
+            --blue: #58A6FF;
+            --radius: 10px;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* LOGIN */
+        #loginScreen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.08) 0%, transparent 70%), var(--bg);
+        }
+
+        .login-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .login-logo {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .login-card h2 {
+            font-size: 22px;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .login-card p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .login-field {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .login-field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .login-field input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .login-field input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+        }
+
+        .login-error {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid rgba(248, 81, 73, 0.3);
+            color: var(--red);
+            padding: 12px;
+            border-radius: var(--radius);
+            font-size: 13px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gold), #9E7A30);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .demo-hint {
+            margin-top: 20px;
+            padding: 14px;
+            background: rgba(201, 168, 76, 0.06);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: var(--radius);
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .demo-hint strong {
+            color: var(--gold);
+        }
+
+        /* DASHBOARD */
+        #dashboard {
+            display: none;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .topbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topbar-brand .icon {
+            font-size: 24px;
+        }
+
+        .topbar-brand strong {
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .topbar-brand span {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .admin-badge {
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: var(--gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid rgba(248, 81, 73, 0.2);
+            color: var(--red);
+            padding: 6px 14px;
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background: rgba(248, 81, 73, 0.2);
+        }
+
+        /* MAIN */
+        .admin-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .admin-sidebar {
+            width: 220px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 24px 0;
+            flex-shrink: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav-item:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .sidebar-nav-item.active {
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.06);
+            border-left-color: var(--gold);
+        }
+
+        .sidebar-nav-item .icon {
+            font-size: 16px;
+        }
+
+        .sidebar-section {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.2);
+            padding: 20px 20px 8px;
+        }
+
+        /* CONTENT */
+        .admin-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px;
+            background: var(--bg);
+        }
+
+        /* STATS */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .stat-card .label {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .change {
+            font-size: 12px;
+            color: var(--green);
+        }
+
+        /* TABLES & CARDS */
+        .admin-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .admin-card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .admin-card-header h3 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .admin-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .admin-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .product-thumb {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--surface2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-cat {
+            background: rgba(88, 166, 255, 0.12);
+            color: var(--blue);
+        }
+
+        .action-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-icon-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .action-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .action-icon-btn.delete:hover {
+            background: rgba(248, 81, 73, 0.15);
+            color: var(--red);
+            border-color: rgba(248, 81, 73, 0.3);
+        }
+
+        .action-icon-btn.edit:hover {
+            background: rgba(201, 168, 76, 0.12);
+            color: var(--gold);
+            border-color: rgba(201, 168, 76, 0.3);
+        }
+
+        /* FORM / MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 36px;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal h3 {
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .field input[type=file] {
+            padding: 8px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            justify-content: flex-end;
+        }
+
+        .btn-primary {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--gold), #9E7A30);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            padding: 10px 24px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* SEARCH */
+        .admin-search {
+            padding: 10px 14px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            outline: none;
+            width: 240px;
+            transition: var(--transition);
+        }
+
+        .admin-search:focus {
+            border-color: var(--gold);
+        }
+
+        .add-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--gold), #9E7A30);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .add-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* TOAST */
+        .admin-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--gold);
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            z-index: 9999;
+            transform: translateX(120%);
+            transition: transform 0.35s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .admin-toast.show {
+            transform: translateX(0);
+        }
+
+        .section-view {
+            display: none;
+        }
+
+        .section-view.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-sidebar {
+                display: none;
+            }
+
+            .modal {
+                margin: 16px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <div id="loginScreen">
+        <div class="login-card">
+            <div class="login-logo">🔐</div>
+            <h2>Admin Dashboard</h2>
+            <p>Samfa Investments Limited — Secure Access</p>
+
+            <div class="login-error" id="loginError"></div>
+
+            <div class="login-field">
+                <label>Email Address</label>
+                <input type="email" id="loginEmail" value="admin@samfa.com" placeholder="admin@samfa.com">
+            </div>
+            <div class="login-field">
+                <label>Password</label>
+                <input type="password" id="loginPassword" value="admin123" placeholder="Enter password">
+            </div>
+
+            <button class="login-btn" id="loginBtn" onclick="doLogin()">Sign In to Dashboard</button>
+
+            <div class="demo-hint">
+                🔑 Demo credentials: <strong>admin@samfa.com</strong> / <strong>admin123</strong><br>
+                Replace with Firebase Auth in production.
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <div class="topbar-brand">
+                <span class="icon">💼</span>
+                <div>
+                    <strong>Samfa Admin</strong>
+                    <br>
+                    <span>Control Panel</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <span class="admin-badge">● Admin</span>
+                <a href="index.html" style="font-size:12px;color:var(--muted);text-decoration:none" target="_blank">View
+                    Site ↗</a>
+                <button class="logout-btn" onclick="doLogout()">Sign Out</button>
+            </div>
+        </div>
+
+        <div class="admin-body">
+            <!-- SIDEBAR -->
+            <nav class="admin-sidebar">
+                <div class="sidebar-section">Main</div>
+                <div class="sidebar-nav-item active" onclick="showSection('overview', this)">
+                    <span class="icon">📊</span> Overview
+                </div>
+                <div class="sidebar-nav-item" onclick="showSection('products', this)">
+                    <span class="icon">📦</span> Products
+                </div>
+                <div class="sidebar-nav-item" onclick="showSection('inquiries', this)">
+                    <span class="icon">✉️</span> Inquiries
+                </div>
+
+                <div class="sidebar-section">Settings</div>
+                <div class="sidebar-nav-item" onclick="showSection('settings', this)">
+                    <span class="icon">⚙️</span> Settings
+                </div>
+            </nav>
+
+            <!-- CONTENT -->
+            <main class="admin-content">
+
+                <!-- OVERVIEW -->
+                <div class="section-view active" id="sec-overview">
+                    <h2 style="font-size:22px;margin-bottom:24px">Dashboard Overview</h2>
+
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="label">Total Products</div>
+                            <div class="value" id="statProducts">—</div>
+                            <div class="change">↑ Active listings</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">Categories</div>
+                            <div class="value">6</div>
+                            <div class="change">↑ All active</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">Inquiries</div>
+                            <div class="value" id="statInquiries">—</div>
+                            <div class="change">↑ This month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="label">Site Status</div>
+                            <div class="value" style="font-size:20px;color:var(--green)">● Live</div>
+                            <div class="change" style="color:var(--green)">All pages online</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Recent Products</h3>
+                        </div>
+                        <table class="admin-table" id="overviewTable">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Price (UGX)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="overviewBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PRODUCTS -->
+                <div class="section-view" id="sec-products">
+                    <div
+                        style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+                        <h2 style="font-size:22px">Products Management</h2>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap">
+                            <input class="admin-search" type="text" id="adminSearch" placeholder="🔍 Search products..."
+                                oninput="renderProductsTable()">
+                            <button class="add-btn" onclick="openModal()">+ Add Product</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <table class="admin-table" id="productsTable">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price (UGX)</th>
+                                    <th>Badge</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- INQUIRIES -->
+                <div class="section-view" id="sec-inquiries">
+                    <h2 style="font-size:22px;margin-bottom:24px">Customer Inquiries</h2>
+                    <div class="admin-card">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inquiriesBody">
+                                <tr>
+                                    <td colspan="4" style="text-align:center;padding:40px;color:var(--muted)">Connect
+                                        Firebase to view inquiries</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SETTINGS -->
+                <div class="section-view" id="sec-settings">
+                    <h2 style="font-size:22px;margin-bottom:24px">Settings</h2>
+                    <div class="admin-card" style="padding:32px">
+                        <p style="color:var(--muted);margin-bottom:24px">Configure your Firebase connection and admin
+                            credentials.</p>
+                        <div class="field">
+                            <label>Firebase Project ID</label>
+                            <input type="text" placeholder="your-project-id">
+                        </div>
+                        <div class="field">
+                            <label>Site Name</label>
+                            <input type="text" value="Samfa Investments Limited">
+                        </div>
+                        <div class="field">
+                            <label>Contact Email</label>
+                            <input type="email" value="samfainvestmentsltd@gmail.com">
+                        </div>
+                        <button class="btn-primary" onclick="adminToast('Settings saved!')">Save Settings</button>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ADD/EDIT MODAL -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <h3 id="modalTitle">Add New Product</h3>
+            <div class="form-row">
+                <div class="field">
+                    <label>Product Name *</label>
+                    <input type="text" id="pName" placeholder="Executive Notebook Set">
+                </div>
+                <div class="field">
+                    <label>Price (UGX) *</label>
+                    <input type="number" id="pPrice" placeholder="45000">
+                </div>
+            </div>
+            <div class="field">
+                <label>Category *</label>
+                <select id="pCategory">
+                    <option value="">Select category...</option>
+                    <option>Stationery</option>
+                    <option>Office Supplies</option>
+                    <option>Catering Services</option>
+                    <option>Agro Products</option>
+                    <option>Electronics & Electrical</option>
+                    <option>Cosmology</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Image URL</label>
+                <input type="url" id="pImage" placeholder="https://images.unsplash.com/...">
+            </div>
+            <div class="field">
+                <label>Upload Image (optional)</label>
+                <input type="file" id="pImageFile" accept="image/*">
+            </div>
+            <div class="field">
+                <label>Badge (optional)</label>
+                <input type="text" id="pBadge" placeholder="New / Sale / Best Seller / Premium">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <textarea id="pDesc" placeholder="Brief product description..." rows="3" style="resize:none"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" id="saveProductBtn" onclick="saveProduct()">Save Product</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-toast" id="adminToastEl"></div>
+
+    <script>
+        // ============================================================
+        // ADMIN STATE
+        // ============================================================
+        let editingId = null;
+
+        // Demo products (replace with Firebase)
+        let adminProducts = [
+            { id: "1", name: "Executive Notebook Set", price: 45000, category: "Stationery", image: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=80&q=60", badge: "Best Seller" },
+            { id: "2", name: "Premium Ballpoint Pens (12pk)", price: 18000, category: "Stationery", image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=80&q=60", badge: "New" },
+            { id: "3", name: "Office Filing Cabinet", price: 320000, category: "Office Supplies", image: "https://images.unsplash.com/photo-1568795437914-df7b42e4f1ff?w=80&q=60", badge: null },
+            { id: "4", name: "Ergonomic Office Chair", price: 580000, category: "Office Supplies", image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=80&q=60", badge: "Sale" },
+            { id: "5", name: "LED Desk Lamp", price: 75000, category: "Electronics & Electrical", image: "https://images.unsplash.com/photo-1616627451515-cbc80e5eca3a?w=80&q=60", badge: null },
+            { id: "6", name: "Luxury Perfume Set", price: 165000, category: "Cosmology", image: "https://images.unsplash.com/photo-1541643600914-78b084683702?w=80&q=60", badge: "Premium" },
+            { id: "7", name: "Organic Maize (50kg)", price: 95000, category: "Agro Products", image: "https://images.unsplash.com/photo-1565180155942-d5a0d3e1c8e3?w=80&q=60", badge: "Fresh" },
+            { id: "8", name: "Premium Coffee Beans (1kg)", price: 42000, category: "Catering Services", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=80&q=60", badge: null },
+        ];
+
+        // ============================================================
+        // AUTH (Demo — replace with Firebase Auth)
+        // ============================================================
+        function doLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const pass = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('loginBtn');
+            const err = document.getElementById('loginError');
+
+            btn.disabled = true;
+            btn.textContent = 'Signing in...';
+            err.style.display = 'none';
+
+            setTimeout(() => {
+                // Demo auth — replace with Firebase signInWithEmailAndPassword
+                if (email === 'admin@samfa.com' && pass === 'admin123') {
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('dashboard').style.display = 'flex';
+                    loadDashboard();
+                } else {
+                    err.textContent = '❌ Invalid email or password. Try admin@samfa.com / admin123';
+                    err.style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Sign In to Dashboard';
+                }
+            }, 800);
+        }
+
+        function doLogout() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        // Allow Enter key on login
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('loginPassword').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+        });
+
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
+        function showSection(name, el) {
+            document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById('sec-' + name).classList.add('active');
+            el.classList.add('active');
+
+            if (name === 'products') renderProductsTable();
+            if (name === 'inquiries') loadInquiries();
+        }
+
+        // ============================================================
+        // DASHBOARD LOAD
+        // ============================================================
+        function loadDashboard() {
+            document.getElementById('statProducts').textContent = adminProducts.length;
+            document.getElementById('statInquiries').textContent = 0;
+            renderOverviewTable();
+
+            // Try Firebase
+            tryFirebase();
+        }
+
+        async function tryFirebase() {
+            try {
+                const { db } = await import('../js/firebase-config.js');
+                const { getDocs, collection } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+                const snap = await getDocs(collection(db, 'products'));
+                if (snap.docs.length) {
+                    adminProducts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                    document.getElementById('statProducts').textContent = adminProducts.length;
+                    renderOverviewTable();
+                }
+                const iqSnap = await getDocs(collection(db, 'inquiries'));
+                document.getElementById('statInquiries').textContent = iqSnap.docs.length;
+            } catch { /* use demo data */ }
+        }
+
+        function renderOverviewTable() {
+            const tbody = document.getElementById('overviewBody');
+            tbody.innerHTML = adminProducts.slice(0, 5).map(p => `
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <img src="${p.image}" alt="${p.name}" class="product-thumb">
+        <span>${p.name}</span>
+      </div></td>
+      <td><span class="badge badge-cat">${p.category}</span></td>
+      <td>${Number(p.price).toLocaleString()}</td>
+    </tr>`).join('');
+        }
+
+        // ============================================================
+        // PRODUCTS TABLE
+        // ============================================================
+        function renderProductsTable() {
+            const q = (document.getElementById('adminSearch')?.value || '').toLowerCase();
+            const filtered = adminProducts.filter(p =>
+                p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+            );
+
+            document.getElementById('productsBody').innerHTML = filtered.map(p => `
+    <tr>
+      <td><img src="${p.image || 'https://via.placeholder.com/44'}" alt="${p.name}" class="product-thumb" onerror="this.src='https://via.placeholder.com/44'"></td>
+      <td style="font-weight:500">${p.name}</td>
+      <td><span class="badge badge-cat">${p.category}</span></td>
+      <td>UGX ${Number(p.price).toLocaleString()}</td>
+      <td>${p.badge ? `<span class="badge" style="background:rgba(201,168,76,0.1);color:var(--gold)">${p.badge}</span>` : '<span style="color:var(--muted)">—</span>'}</td>
+      <td>
+        <div class="action-row">
+          <button class="action-icon-btn edit" onclick="editProduct('${p.id}')" title="Edit">✏️</button>
+          <button class="action-icon-btn delete" onclick="deleteProduct('${p.id}')" title="Delete">🗑️</button>
+        </div>
+      </td>
+    </tr>`).join('') || `<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--muted)">No products found.</td></tr>`;
+        }
+
+        // ============================================================
+        // PRODUCT CRUD
+        // ============================================================
+        function openModal(id = null) {
+            editingId = id;
+            document.getElementById('modalTitle').textContent = id ? 'Edit Product' : 'Add New Product';
+            if (id) {
+                const p = adminProducts.find(x => x.id === id);
+                if (p) {
+                    document.getElementById('pName').value = p.name;
+                    document.getElementById('pPrice').value = p.price;
+                    document.getElementById('pCategory').value = p.category;
+                    document.getElementById('pImage').value = p.image || '';
+                    document.getElementById('pBadge').value = p.badge || '';
+                    document.getElementById('pDesc').value = p.description || '';
+                }
+            } else {
+                ['pName', 'pPrice', 'pImage', 'pBadge', 'pDesc'].forEach(id => document.getElementById(id).value = '');
+                document.getElementById('pCategory').value = '';
+            }
+            document.getElementById('productModal').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('open');
+            editingId = null;
+        }
+
+        function editProduct(id) { openModal(id); }
+
+        async function saveProduct() {
+            const name = document.getElementById('pName').value.trim();
+            const price = parseInt(document.getElementById('pPrice').value);
+            const category = document.getElementById('pCategory').value;
+            const image = document.getElementById('pImage').value.trim();
+            const badge = document.getElementById('pBadge').value.trim();
+            const description = document.getElementById('pDesc').value.trim();
+
+            if (!name || !price || !category) {
+                adminToast('⚠️ Please fill required fields.');
+                return;
+            }
+
+            const btn = document.getElementById('saveProductBtn');
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+
+            const productData = {
+                name, price, category,
+                image: image || 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400',
+                badge: badge || null,
+                description
+            };
+
+            try {
+                // Try Firebase
+                if (editingId) {
+                    const { db } = await import('../js/firebase-config.js');
+                    const { updateDoc, doc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+                    await updateDoc(doc(db, 'products', editingId), productData);
+                    const idx = adminProducts.findIndex(p => p.id === editingId);
+                    if (idx > -1) adminProducts[idx] = { ...adminProducts[idx], ...productData };
+                    adminToast('✅ Product updated!');
+                } else {
+                    const { db } = await import('../js/firebase-config.js');
+                    const { addDoc, collection } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+                    const ref = await addDoc(collection(db, 'products'), { ...productData, createdAt: new Date() });
+                    adminProducts.unshift({ id: ref.id, ...productData });
+                    adminToast('✅ Product added!');
+                }
+            } catch {
+                // Local fallback
+                if (editingId) {
+                    const idx = adminProducts.findIndex(p => p.id === editingId);
+                    if (idx > -1) adminProducts[idx] = { ...adminProducts[idx], ...productData };
+                    adminToast('✅ Product updated (local)!');
+                } else {
+                    adminProducts.unshift({ id: Date.now().toString(), ...productData });
+                    adminToast('✅ Product added (local)!');
+                }
+            }
+
+            document.getElementById('statProducts').textContent = adminProducts.length;
+            btn.disabled = false;
+            btn.textContent = 'Save Product';
+            closeModal();
+            renderProductsTable();
+            renderOverviewTable();
+        }
+
+        async function deleteProduct(id) {
+            if (!confirm('Delete this product? This cannot be undone.')) return;
+            try {
+                const { db } = await import('../js/firebase-config.js');
+                const { deleteDoc, doc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+                await deleteDoc(doc(db, 'products', id));
+            } catch { /* local only */ }
+            adminProducts = adminProducts.filter(p => p.id !== id);
+            document.getElementById('statProducts').textContent = adminProducts.length;
+            renderProductsTable();
+            renderOverviewTable();
+            adminToast('🗑️ Product deleted.');
+        }
+
+        // ============================================================
+        // INQUIRIES
+        // ============================================================
+        async function loadInquiries() {
+            try {
+                const { db } = await import('../js/firebase-config.js');
+                const { getDocs, collection, orderBy, query } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+                const snap = await getDocs(query(collection(db, 'inquiries'), orderBy('timestamp', 'desc')));
+                const rows = snap.docs.map(d => {
+                    const i = d.data();
+                    return `<tr>
+        <td>${i.name || '—'}</td>
+        <td>${i.email || '—'}</td>
+        <td>${i.subject || 'General'}</td>
+        <td>${i.timestamp ? new Date(i.timestamp).toLocaleDateString() : '—'}</td>
+      </tr>`;
+                }).join('');
+                document.getElementById('inquiriesBody').innerHTML = rows || `<tr><td colspan="4" style="text-align:center;padding:40px;color:var(--muted)">No inquiries yet.</td></tr>`;
+            } catch {
+                document.getElementById('inquiriesBody').innerHTML = `<tr><td colspan="4" style="text-align:center;padding:40px;color:var(--muted)">Connect Firebase to view inquiries.</td></tr>`;
+            }
+        }
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+        let toastT;
+        function adminToast(msg) {
+            const t = document.getElementById('adminToastEl');
+            t.textContent = msg;
+            t.classList.add('show');
+            clearTimeout(toastT);
+            toastT = setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        // Close modal on overlay click
+        document.getElementById('productModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+
+</html>

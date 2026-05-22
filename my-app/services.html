@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services – Samfa Investments Limited</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, var(--deep) 0%, var(--charcoal) 100%);
+            padding: 160px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=40') center/cover;
+            opacity: 0.07;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+        }
+
+        /* SERVICES */
+        .services-section {
+            background: var(--ivory);
+        }
+
+        .service-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .service-block:last-child {
+            border-bottom: none;
+        }
+
+        .service-block.reverse {
+            direction: rtl;
+        }
+
+        .service-block.reverse>* {
+            direction: ltr;
+        }
+
+        .service-img {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 440px;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-block:hover .service-img img {
+            transform: scale(1.04);
+        }
+
+        .service-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.5) 0%, transparent 60%);
+        }
+
+        .service-img-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .service-img-badge span {
+            color: var(--gold);
+        }
+
+        .service-content {}
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-content .section-label {
+            margin-bottom: 12px;
+        }
+
+        .service-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            margin-bottom: 16px;
+        }
+
+        .service-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .service-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px;
+            background: var(--cream);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .service-feature .check {
+            color: var(--gold);
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .service-feature p {
+            font-size: 13px;
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        /* PROCESS SECTION */
+        .process-section {
+            background: var(--dark);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            top: 28px;
+            right: -20px;
+            color: var(--gold);
+            font-size: 20px;
+            opacity: 0.4;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .process-step h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.6;
+        }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 900px) {
+
+            .service-block,
+            .service-block.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+                gap: 40px;
+            }
+
+            .service-img {
+                height: 300px;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="navbar"></header>
+
+    <div class="page-hero">
+        <div class="container page-hero-content">
+            <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Services</span></div>
+            <h1>Our Services</h1>
+            <p style="color:rgba(255,255,255,0.5); margin-top:10px; font-size:15px">Comprehensive solutions tailored to
+                your business needs</p>
+        </div>
+    </div>
+
+    <section class="services-section">
+        <div class="container">
+
+            <!-- CATERING -->
+            <div class="service-block reveal">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80"
+                        alt="Catering Services">
+                    <div class="service-img-overlay"></div>
+                    <div class="service-img-badge">Premium <span>Catering</span></div>
+                </div>
+                <div class="service-content">
+                    <span class="service-icon">🍽️</span>
+                    <div class="section-label">Food & Hospitality</div>
+                    <h2>Professional Catering Services</h2>
+                    <p>From corporate events to institutional meals, we provide full-service catering solutions with
+                        fresh, quality ingredients and professional staff. Our team handles everything from planning to
+                        cleanup.</p>
+                    <div class="service-features">
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Corporate Event Catering</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Institutional Meal Supply</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Food Ingredient Supply</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Custom Menu Planning</p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn btn-gold">Request Service →</a>
+                </div>
+            </div>
+
+            <!-- AGRO -->
+            <div class="service-block reverse reveal">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=700&q=80"
+                        alt="Agro Products">
+                    <div class="service-img-overlay"></div>
+                    <div class="service-img-badge">Fresh <span>Farm Produce</span></div>
+                </div>
+                <div class="service-content">
+                    <span class="service-icon">🌾</span>
+                    <div class="section-label">Agriculture</div>
+                    <h2>Quality Agro Products</h2>
+                    <p>We source directly from verified Ugandan farms to supply premium grains, seeds, and agricultural
+                        inputs. Our agro supply chain ensures freshness, proper packaging, and competitive bulk pricing.
+                    </p>
+                    <div class="service-features">
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Grains & Cereals Supply</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Agricultural Inputs</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Bulk Wholesale Orders</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Farm-to-Business Delivery</p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn btn-gold">Request Service →</a>
+                </div>
+            </div>
+
+            <!-- ELECTRICAL -->
+            <div class="service-block reveal">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=700&q=80"
+                        alt="Electrical Installation">
+                    <div class="service-img-overlay"></div>
+                    <div class="service-img-badge">Expert <span>Installation</span></div>
+                </div>
+                <div class="service-content">
+                    <span class="service-icon">⚡</span>
+                    <div class="section-label">Electrical</div>
+                    <h2>Electrical Installation Services</h2>
+                    <p>Our certified electricians deliver safe, code-compliant electrical installations for offices,
+                        commercial properties, and industrial facilities. From wiring to full system setups.</p>
+                    <div class="service-features">
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Office Wiring & Rewiring</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Solar Panel Installation</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Generator Connections</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Security & CCTV Setup</p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn btn-gold">Request Service →</a>
+                </div>
+            </div>
+
+            <!-- ELECTRONICS -->
+            <div class="service-block reverse reveal">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80"
+                        alt="Electronics Supply">
+                    <div class="service-img-overlay"></div>
+                    <div class="service-img-badge">Latest <span>Tech</span></div>
+                </div>
+                <div class="service-content">
+                    <span class="service-icon">💻</span>
+                    <div class="section-label">Technology</div>
+                    <h2>Electronics Supply</h2>
+                    <p>We supply certified, warranty-backed electronics from leading brands. Whether you need office
+                        computers, projectors, printers, or network equipment, we source and deliver on time.</p>
+                    <div class="service-features">
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Computers & Laptops</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Printers & Scanners</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Projectors & Displays</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Networking Equipment</p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn btn-gold">Request Service →</a>
+                </div>
+            </div>
+
+            <!-- COSMOLOGY -->
+            <div class="service-block reveal">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=700&q=80" alt="Cosmology">
+                    <div class="service-img-overlay"></div>
+                    <div class="service-img-badge">Premium <span>Beauty</span></div>
+                </div>
+                <div class="service-content">
+                    <span class="service-icon">💄</span>
+                    <div class="section-label">Beauty & Wellness</div>
+                    <h2>Cosmology Solutions</h2>
+                    <p>Samfa supplies premium beauty and wellness products for both retail and wholesale. From
+                        professional salon supplies to personal care bundles, we curate only certified, high-quality
+                        products.</p>
+                    <div class="service-features">
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Skincare & Cosmetics</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Hair Care Products</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Perfumes & Fragrances</p>
+                        </div>
+                        <div class="service-feature"><span class="check">✦</span>
+                            <p>Salon Supply Wholesale</p>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="btn btn-gold">Request Service →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="process-section">
+        <div class="container">
+            <div style="text-align:center">
+                <div class="section-label" style="color:var(--gold)">Simple Process</div>
+                <h2 class="section-title" style="color:#fff; margin-top:12px">How It Works</h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.4); margin:0 auto; text-align:center">
+                    Getting started with Samfa is straightforward</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-num">1</div>
+                    <h4>Contact Us</h4>
+                    <p>Reach out via our contact form, phone, or email with your requirements.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">2</div>
+                    <h4>Get a Quote</h4>
+                    <p>Our team reviews your needs and provides a competitive, transparent quote.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">3</div>
+                    <h4>Confirm Order</h4>
+                    <p>Approve the quote, finalize details, and we start processing your order.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">4</div>
+                    <h4>Delivery</h4>
+                    <p>We deliver on time to your doorstep anywhere in Uganda.</p>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:56px">
+                <a href="contact.html" class="btn btn-gold">Start a Request →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer"></footer>
+  
+    <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>
