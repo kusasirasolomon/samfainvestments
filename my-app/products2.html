@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products – Samfa Investments Limited</title>
+    <meta name="description"
+        content="Browse our full range of stationery, office supplies, agro products, electronics, catering and cosmology.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, var(--deep) 0%, var(--charcoal) 100%);
+            padding: 160px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=40') center/cover;
+            opacity: 0.06;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* LAYOUT */
+        .shop-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            padding: 60px 0 100px;
+        }
+
+        /* SIDEBAR */
+        .filter-sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-sidebar h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .clear-btn {
+            font-size: 11px;
+            color: var(--gold);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .filter-group {
+            margin-bottom: 32px;
+        }
+
+        .filter-group-title {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            border: 1.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: var(--dark);
+            background: var(--ivory);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+        }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        .cat-filter-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 11px 16px;
+            background: var(--ivory);
+            border: 1.5px solid transparent;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-body);
+            cursor: pointer;
+            margin-bottom: 8px;
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .cat-filter-btn:hover,
+        .cat-filter-btn.active {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: var(--gold);
+            color: var(--gold-dark);
+        }
+
+        .cat-filter-btn .count {
+            font-size: 11px;
+            background: rgba(0, 0, 0, 0.06);
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        .cat-filter-btn.active .count {
+            background: var(--gold);
+            color: #fff;
+        }
+
+        /* Price range */
+        .price-range {
+            padding: 8px 0;
+        }
+
+        .price-range input[type=range] {
+            width: 100%;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+
+        .price-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .price-labels strong {
+            color: var(--dark);
+        }
+
+        /* PRODUCTS AREA */
+        .products-area {}
+
+        .products-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .results-count {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .results-count strong {
+            color: var(--dark);
+        }
+
+        .sort-select {
+            padding: 10px 16px;
+            border: 1.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: var(--dark);
+            background: var(--white);
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .sort-select:focus {
+            border-color: var(--gold);
+        }
+
+        .grid-toggle {
+            display: flex;
+            gap: 6px;
+        }
+
+        .grid-toggle-btn {
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .grid-toggle-btn.active {
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.08);
+        }
+
+        #productsGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            transition: var(--transition);
+        }
+
+        #productsGrid.list-view {
+            grid-template-columns: 1fr;
+        }
+
+        #productsGrid.list-view .product-card {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #productsGrid.list-view .product-img-wrap {
+            width: 200px;
+            flex-shrink: 0;
+            height: auto;
+        }
+
+        /* LOAD MORE */
+        .load-more-wrap {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-state .icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .empty-state h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: var(--text-muted);
+        }
+
+        /* ACTIVE FILTERS */
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .filter-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid var(--border);
+            color: var(--gold-dark);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 50px;
+        }
+
+        .filter-tag button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: inherit;
+            font-size: 14px;
+            line-height: 1;
+            padding: 0;
+        }
+
+        /* REVEAL */
+        /* .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        } */
+         .reveal {
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+         
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+        /* QUICK VIEW STYLE */
+        .quick-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+             width: 100%;
+            height: 100%;
+             background: rgba(0,0,0,0.7);
+            justify-content: center;
+             align-items: center;
+              z-index: 9999;
+        }
+
+        .quick-modal-content {
+             background: white;
+              padding: 20px;
+              width: 400px;
+              border-radius: 10px;
+               position: relative;
+        }
+
+        .quick-modal img {
+             width: 100%;
+             border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        
+
+        @media (max-width: 900px) {
+            .shop-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-sidebar {
+                position: static;
+            }
+
+            #productsGrid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 540px) {
+            #productsGrid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header id="navbar"></header>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="container page-hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Products</span>
+            </div>
+            <h1>All Products</h1>
+            <p style="color:rgba(255,255,255,0.5); margin-top:10px; font-size:15px">Explore our premium collection
+                across 6 categories</p>
+        </div>
+    </div>
+
+    <!-- SHOP LAYOUT -->
+    <div class="container">
+        <div class="shop-layout">
+
+            <!-- SIDEBAR -->
+            <aside class="filter-sidebar">
+                <h3>Filters <button class="clear-btn" onclick="clearFilters()">Clear All</button></h3>
+
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search products..." oninput="applyFilters()">
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group-title">Category</div>
+                    <button class="cat-filter-btn active" data-cat="all" onclick="selectCat(this, 'all')">
+                        All Categories <span class="count" id="cnt-all">0</span>
+                    </button>
+                    <button class="cat-filter-btn" data-cat="Stationery" onclick="selectCat(this, 'Stationery')">
+                        ✏️ Stationery <span class="count" id="cnt-Stationery">0</span>
+                    </button>
+                    <button class="cat-filter-btn" data-cat="Office Supplies"
+                        onclick="selectCat(this, 'Office Supplies')">
+                        🗂️ Office Supplies <span class="count" id="cnt-Office Supplies">0</span>
+                    </button>
+                    <button class="cat-filter-btn" data-cat="Catering Services"
+                        onclick="selectCat(this, 'Catering Services')">
+                        🍽️ Catering Services <span class="count" id="cnt-Catering Services">0</span>
+                    </button>
+                    <button class="cat-filter-btn" data-cat="Agro Products" onclick="selectCat(this, 'Agro Products')">
+                        🌾 Agro Products <span class="count" id="cnt-Agro Products">0</span>
+                    </button>
+                    <button class="cat-filter-btn" data-cat="Electronics & Electrical"
+                        onclick="selectCat(this, 'Electronics & Electrical')">
+                        ⚡ Electronics & Electrical <span class="count" id="cnt-Electronics & Electrical">0</span>
+                    </button>
+                    <button class="cat-filter-btn" data-cat="Cosmology" onclick="selectCat(this, 'Cosmology')">
+                        💄 Cosmology <span class="count" id="cnt-Cosmology">0</span>
+                    </button>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group-title">Price Range (UGX)</div>
+                    <div class="price-range">
+                        <input type="range" id="priceRange" min="0" max="1000000" value="1000000" step="5000"
+                            oninput="applyFilters()">
+                        <div class="price-labels">
+                            <span>UGX 0</span>
+                            <strong id="priceLabel">UGX 1,000,000</strong>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- PRODUCTS -->
+            <main class="products-area">
+                <div class="active-filters" id="activeFilters"></div>
+
+                <div class="products-toolbar">
+                    <div class="results-count">Showing <strong id="resultCount">0</strong> products</div>
+                    <div style="display:flex; align-items:center; gap:12px">
+                        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+                            <option value="default">Sort: Default</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="name-asc">Name: A–Z</option>
+                        </select>
+                        <div class="grid-toggle">
+                            <button class="grid-toggle-btn active" id="gridBtn" onclick="setView('grid')"
+                                title="Grid View">⊞</button>
+                            <button class="grid-toggle-btn" id="listBtn" onclick="setView('list')"
+                                title="List View">☰</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="productsGrid">
+                    <div class="skeleton" style="height:340px;border-radius:20px"></div>
+                    <div class="skeleton" style="height:340px;border-radius:20px"></div>
+                    <div class="skeleton" style="height:340px;border-radius:20px"></div>
+                    <div class="skeleton" style="height:340px;border-radius:20px"></div>
+                    <div class="skeleton" style="height:340px;border-radius:20px"></div>
+                    <div class="skeleton" style="height:340px;border-radius:20px"></div>
+                </div>
+
+                <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+                    <button class="btn btn-outline" onclick="loadMore()">Load More Products</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer id="footer"></footer>
+
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module">
+       
+        import { getProducts } from './js/firebase-config.js';
+
+            let allProducts = [];
+            let currentCat = 'all';
+            let page = 1;
+            const PER_PAGE = 9;
+
+            // 🔥 LOAD PRODUCTS FROM FIREBASE
+            async function loadProducts() {
+                try {
+                    allProducts = await getProducts();
+                    console.log("🔥 Products from Firebase:", allProducts);
+                } catch (err) {
+                    console.error("❌ Firebase failed:", err);
+                    allProducts = [];
+                }
+
+                updateCounts();
+                checkURLParams();
+                applyFilters();
+            }
+
+            // 🔗 CHECK URL CATEGORY
+            function checkURLParams() {
+                const params = new URLSearchParams(location.search);
+                const cat = params.get('cat');
+                if (cat) {
+                    const btn = document.querySelector(`[data-cat="${cat}"]`);
+                    if (btn) {
+                        selectCat(btn, cat);
+                        return;
+                    }
+                }
+                applyFilters();
+            }
+            function quickView(id) {
+                    const product = allProducts.find(p => p.id === id);
+
+                    if (!product) return;
+
+                    showToast(`👁 ${product.name} - UGX ${product.price}`);
+                }
+
+                // window.quickView = quickView;
+
+            // 🔢 UPDATE CATEGORY COUNTS
+            function updateCounts() {
+                const cats = ['all', 'Stationery', 'Office Supplies', 'Catering Services', 'Agro Products', 'Electronics & Electrical', 'Cosmology'];
+
+                cats.forEach(c => {
+                    const el = document.getElementById('cnt-' + c);
+                    if (!el) return;
+
+                    if (c === 'all') {
+                        el.textContent = allProducts.length;
+                    } else {
+                        el.textContent = allProducts.filter(p => p.category === c).length;
+                    }
+                });
+            }
+
+            // 🟡 SELECT CATEGORY
+            function selectCat(btn, cat) {
+                document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                currentCat = cat;
+                page = 1;
+                applyFilters();
+            }
+
+            // 🔍 FILTER + DISPLAY
+            function applyFilters() {
+                const search = document.getElementById('searchInput').value.toLowerCase();
+                const maxPrice = parseInt(document.getElementById('priceRange').value);
+                const sort = document.getElementById('sortSelect').value;
+
+                document.getElementById('priceLabel').textContent = 'UGX ' + maxPrice.toLocaleString();
+
+                let filtered = allProducts.filter(p => {
+                    return (
+                        (currentCat === 'all' || p.category === currentCat) &&
+                        (
+                            ((p.name || '').toLowerCase().includes(search)) ||
+                            ((p.category || '').toLowerCase().includes(search))
+                        ) &&
+                        ((Number(p.price) || 0) <= maxPrice)
+                    );
+                });
+                // 🔃 SORTING
+                if (sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
+                else if (sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
+                else if (sort === 'name-asc') filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+                const paginated = filtered.slice(0, page * PER_PAGE);
+                const grid = document.getElementById('productsGrid');
+
+                document.getElementById('resultCount').textContent = filtered.length;
+
+                // ❌ EMPTY
+                if (!filtered.length) {
+                    grid.innerHTML = `
+            <div class="empty-state">
+                <span class="icon">🔍</span>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters.</p>
+            </div>`;
+                    return;
+                }
+
+                // ✅ IMPORTANT: use window.buildProductCard
+                // grid.innerHTML = paginated.map(p => window.buildProductCard(p)).join('');
+                console.log("Products being displayed:", paginated);
+
+                grid.innerHTML = paginated.map(p => {
+                    console.log("Rendering:", p);
+
+                    if (!window.buildProductCard) {
+                        console.error("❌ buildProductCard NOT FOUND");
+                        return "";
+                    }
+
+                    const html = window.buildProductCard(p);
+
+                    console.log("Generated HTML:", html);
+
+                    return html;
+                }).join('');
+
+                setTimeout(() => {
+                    if (window.initObserver) window.initObserver();
+                }, 50);
+
+                // LOAD MORE BUTTON
+                document.getElementById('loadMoreWrap').style.display =
+                    filtered.length > paginated.length ? 'block' : 'none';
+
+                // ACTIVE FILTER TAGS
+                const af = document.getElementById('activeFilters');
+                let tags = [];
+
+                if (currentCat !== 'all') {
+                    tags.push(`<div class="filter-tag">${currentCat}
+            <button onclick="selectCat(document.querySelector('[data-cat=all]'), 'all')">×</button>
+        </div>`);
+                }
+
+                if (search) {
+                    tags.push(`<div class="filter-tag">Search: "${search}"
+            <button onclick="document.getElementById('searchInput').value=''; applyFilters()">×</button>
+        </div>`);
+                }
+
+                af.innerHTML = tags.join('');
+            }
+
+            // ➕ LOAD MORE
+            function loadMore() {
+                page++;
+                applyFilters();
+            }
+
+            // 🧹 CLEAR FILTERS
+            function clearFilters() {
+                document.getElementById('searchInput').value = '';
+                document.getElementById('priceRange').value = 1000000;
+                document.getElementById('sortSelect').value = 'default';
+
+                selectCat(document.querySelector('[data-cat="all"]'), 'all');
+            }
+
+            // 🔲 VIEW SWITCH
+            function setView(type) {
+                const grid = document.getElementById('productsGrid');
+
+                document.getElementById('gridBtn').classList.toggle('active', type === 'grid');
+                document.getElementById('listBtn').classList.toggle('active', type === 'list');
+
+                grid.classList.toggle('list-view', type === 'list');
+            }
+
+            // 🚀 START
+            loadProducts();
+                // MAKE FUNCTIONS GLOBAL
+                    // window.applyFilters = applyFilters;
+                    // window.selectCat = selectCat;
+                    // window.quickView = quickView;
+                    // window.addToCart = addToCart;
+                    // window.clearFilters = clearFilters;
+                    // window.setView = setView;
+                    // window.loadMore = loadMore;
+
+
+    
+    </script>
+    <div id="quickViewModal" class="quick-modal">
+        <div class="quick-modal-content">
+    
+            <span class="close-modal" onclick="closeQuickView()">×</span>
+    
+            <img id="qv-image" src="" alt="">
+    
+            <h2 id="qv-name"></h2>
+    
+            <p id="qv-category"></p>
+    
+            <p id="qv-description"></p>
+    
+            <h3 id="qv-price"></h3>
+    
+            <button id="qv-add-cart">Add to Cart</button>
+    
+        </div>
+    </div>
+</body>
+
+</html>
