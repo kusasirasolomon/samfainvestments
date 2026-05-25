@@ -1,0 +1,8 @@
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+    base: './', // VERY IMPORTANT for deployment
+    build: {
+        outDir: 'dist'
+    }
+});

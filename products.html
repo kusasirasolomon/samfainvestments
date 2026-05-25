@@ -112,40 +112,6 @@
             margin-bottom: 16px;
         }
 
-        .search-box {
-            position: relative;
-            margin-bottom: 32px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 16px 12px 40px;
-            border: 1.5px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 13px;
-            color: var(--dark);
-            background: var(--ivory);
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .search-box input:focus {
-            border-color: var(--gold);
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
-        }
-
-        .search-box::before {
-            content: '🔍';
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            pointer-events: none;
-        }
-
         .cat-filter-btn {
             display: flex;
             align-items: center;
@@ -184,32 +150,7 @@
             color: #fff;
         }
 
-        /* Price range */
-        .price-range {
-            padding: 8px 0;
-        }
-
-        .price-range input[type=range] {
-            width: 100%;
-            accent-color: var(--gold);
-            cursor: pointer;
-        }
-
-        .price-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 10px;
-        }
-
-        .price-labels strong {
-            color: var(--dark);
-        }
-
         /* PRODUCTS AREA */
-        .products-area {}
-
         .products-toolbar {
             display: flex;
             align-items: center;
@@ -352,14 +293,49 @@
 
         /* REVEAL */
         .reveal {
-            opacity: 0;
-            transform: translateY(16px);
+            opacity: 1;
+            transform: none;
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .reveal.visible {
             opacity: 1;
             transform: none;
+        }
+
+        /* QUICK VIEW STYLE */
+        .quick-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .quick-modal-content {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .quick-modal img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            cursor: pointer;
         }
 
         @media (max-width: 900px) {
@@ -406,52 +382,33 @@
     <div class="container">
         <div class="shop-layout">
 
-            <!-- SIDEBAR -->
+            <!-- SIDEBAR — categories only, no search, no price range -->
             <aside class="filter-sidebar">
-                <h3>Filters <button class="clear-btn" onclick="clearFilters()">Clear All</button></h3>
-
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search products..." oninput="applyFilters()">
-                </div>
+                <h3>Filters <button class="clear-btn" id="clearBtn">Clear All</button></h3>
 
                 <div class="filter-group">
                     <div class="filter-group-title">Category</div>
-                    <button class="cat-filter-btn active" data-cat="all" onclick="selectCat(this, 'all')">
+                    <button class="cat-filter-btn active" data-cat="all">
                         All Categories <span class="count" id="cnt-all">0</span>
                     </button>
-                    <button class="cat-filter-btn" data-cat="Stationery" onclick="selectCat(this, 'Stationery')">
+                    <button class="cat-filter-btn" data-cat="Stationery">
                         ✏️ Stationery <span class="count" id="cnt-Stationery">0</span>
                     </button>
-                    <button class="cat-filter-btn" data-cat="Office Supplies"
-                        onclick="selectCat(this, 'Office Supplies')">
-                        🗂️ Office Supplies <span class="count" id="cnt-Office Supplies">0</span>
+                    <button class="cat-filter-btn" data-cat="Office Supplies">
+                        🗂️ Office Supplies <span class="count" id="cnt-Office-Supplies">0</span>
                     </button>
-                    <button class="cat-filter-btn" data-cat="Catering Services"
-                        onclick="selectCat(this, 'Catering Services')">
-                        🍽️ Catering Services <span class="count" id="cnt-Catering Services">0</span>
+                    <button class="cat-filter-btn" data-cat="Catering Services">
+                        🍽️ Catering Services <span class="count" id="cnt-Catering-Services">0</span>
                     </button>
-                    <button class="cat-filter-btn" data-cat="Agro Products" onclick="selectCat(this, 'Agro Products')">
-                        🌾 Agro Products <span class="count" id="cnt-Agro Products">0</span>
+                    <button class="cat-filter-btn" data-cat="Agro Products">
+                        🌾 Agro Products <span class="count" id="cnt-Agro-Products">0</span>
                     </button>
-                    <button class="cat-filter-btn" data-cat="Electronics & Electrical"
-                        onclick="selectCat(this, 'Electronics & Electrical')">
-                        ⚡ Electronics & Electrical <span class="count" id="cnt-Electronics & Electrical">0</span>
+                    <button class="cat-filter-btn" data-cat="Electronics & Electrical">
+                        ⚡ Electronics & Electrical <span class="count" id="cnt-Electronics">0</span>
                     </button>
-                    <button class="cat-filter-btn" data-cat="Cosmology" onclick="selectCat(this, 'Cosmology')">
+                    <button class="cat-filter-btn" data-cat="Cosmology">
                         💄 Cosmology <span class="count" id="cnt-Cosmology">0</span>
                     </button>
-                </div>
-
-                <div class="filter-group">
-                    <div class="filter-group-title">Price Range (UGX)</div>
-                    <div class="price-range">
-                        <input type="range" id="priceRange" min="0" max="1000000" value="1000000" step="5000"
-                            oninput="applyFilters()">
-                        <div class="price-labels">
-                            <span>UGX 0</span>
-                            <strong id="priceLabel">UGX 1,000,000</strong>
-                        </div>
-                    </div>
                 </div>
             </aside>
 
@@ -462,17 +419,15 @@
                 <div class="products-toolbar">
                     <div class="results-count">Showing <strong id="resultCount">0</strong> products</div>
                     <div style="display:flex; align-items:center; gap:12px">
-                        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+                        <select class="sort-select" id="sortSelect">
                             <option value="default">Sort: Default</option>
                             <option value="price-asc">Price: Low to High</option>
                             <option value="price-desc">Price: High to Low</option>
                             <option value="name-asc">Name: A–Z</option>
                         </select>
                         <div class="grid-toggle">
-                            <button class="grid-toggle-btn active" id="gridBtn" onclick="setView('grid')"
-                                title="Grid View">⊞</button>
-                            <button class="grid-toggle-btn" id="listBtn" onclick="setView('list')"
-                                title="List View">☰</button>
+                            <button class="grid-toggle-btn active" id="gridBtn" title="Grid View">⊞</button>
+                            <button class="grid-toggle-btn" id="listBtn" title="List View">☰</button>
                         </div>
                     </div>
                 </div>
@@ -487,7 +442,7 @@
                 </div>
 
                 <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
-                    <button class="btn btn-outline" onclick="loadMore()">Load More Products</button>
+                    <button class="btn btn-outline" id="loadMoreBtn">Load More Products</button>
                 </div>
             </main>
         </div>
@@ -495,141 +450,171 @@
 
     <footer id="footer"></footer>
 
-    <script src="js/main.js"></script>
-    <script>
+    <div id="quickViewModal" class="quick-modal">
+        <div class="quick-modal-content">
+            <span class="close-modal" onclick="closeQuickView()">×</span>
+            <img id="qv-image" src="" alt="">
+            <h2 id="qv-name"></h2>
+            <p id="qv-category"></p>
+            <p id="qv-description"></p>
+            <h3 id="qv-price"></h3>
+            <button id="qv-add-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- SINGLE MODULE SCRIPT — fixes all scope/timing issues -->
+    <script type="module">
+        import { getProducts, getSampleProducts } from './js/firebase-config.js';
+        import './js/main.js';
+
+        // ── STATE ──
         let allProducts = [];
         let currentCat = 'all';
         let page = 1;
         const PER_PAGE = 9;
 
-        const SAMPLE_PRODUCTS = [
-            { id: "1", name: "Executive Notebook Set", price: 45000, category: "Stationery", image: "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&q=80", badge: "Best Seller" },
-            { id: "2", name: "Premium Ballpoint Pens (12pk)", price: 18000, category: "Stationery", image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80", badge: "New" },
-            { id: "3", name: "Sticky Notes Combo Pack", price: 12000, category: "Stationery", image: "https://images.unsplash.com/photo-1584476843779-c3b6f84be3a4?w=400&q=80", badge: null },
-            { id: "4", name: "Stapler & Pins Set", price: 22000, category: "Stationery", image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&q=80", badge: null },
-            { id: "5", name: "Office Filing Cabinet", price: 320000, category: "Office Supplies", image: "https://images.unsplash.com/photo-1568795437914-df7b42e4f1ff?w=400&q=80", badge: null },
-            { id: "6", name: "Ergonomic Office Chair", price: 580000, category: "Office Supplies", image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=400&q=80", badge: "Sale" },
-            { id: "7", name: "Office Desk Organizer", price: 65000, category: "Office Supplies", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80", badge: null },
-            { id: "8", name: "Whiteboard (120×90cm)", price: 185000, category: "Office Supplies", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80", badge: null },
-            { id: "9", name: "Premium Coffee Beans (1kg)", price: 42000, category: "Catering Services", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&q=80", badge: null },
-            { id: "10", name: "Commercial Tea Set", price: 96000, category: "Catering Services", image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80", badge: "New" },
-            { id: "11", name: "Catering Serving Trays (6pc)", price: 55000, category: "Catering Services", image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80", badge: null },
-            { id: "12", name: "Organic Maize (50kg)", price: 95000, category: "Agro Products", image: "https://images.unsplash.com/photo-1565180155942-d5a0d3e1c8e3?w=400&q=80", badge: "Fresh" },
-            { id: "13", name: "Rice (25kg bag)", price: 78000, category: "Agro Products", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80", badge: null },
-            { id: "14", name: "Sunflower Seeds (10kg)", price: 48000, category: "Agro Products", image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80", badge: null },
-            { id: "15", name: "LED Desk Lamp", price: 75000, category: "Electronics & Electrical", image: "https://images.unsplash.com/photo-1616627451515-cbc80e5eca3a?w=400&q=80", badge: null },
-            { id: "16", name: "Power Extension Board (4-outlet)", price: 35000, category: "Electronics & Electrical", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80", badge: null },
-            { id: "17", name: "Digital Projector (3200 Lumens)", price: 1250000, category: "Electronics & Electrical", image: "https://images.unsplash.com/photo-1595872018818-97555653a011?w=400&q=80", badge: "Premium" },
-            { id: "18", name: "Luxury Perfume Set", price: 165000, category: "Cosmology", image: "https://images.unsplash.com/photo-1541643600914-78b084683702?w=400&q=80", badge: "Premium" },
-            { id: "19", name: "Facial Skincare Kit", price: 88000, category: "Cosmology", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&q=80", badge: null },
-            { id: "20", name: "Hair Care Bundle", price: 72000, category: "Cosmology", image: "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&q=80", badge: "New" },
-        ];
-
+        // ── LOAD PRODUCTS ──
         async function loadProducts() {
             try {
-                const { getProducts } = await import('./js/firebase-config.js');
                 allProducts = await getProducts();
-                if (!allProducts.length) throw new Error('empty');
-            } catch {
-                allProducts = SAMPLE_PRODUCTS;
+                console.log('🔥 Products from Firebase:', allProducts);
+            } catch (err) {
+                console.warn('Firebase failed, using samples:', err);
+                allProducts = getSampleProducts();
             }
+            window._samfaProducts = allProducts;
             updateCounts();
             checkURLParams();
-            applyFilters();
         }
 
+        // ── URL PARAMS ──
         function checkURLParams() {
-            const params = new URLSearchParams(location.search);
-            const cat = params.get('cat');
+            const cat = new URLSearchParams(location.search).get('cat');
             if (cat) {
                 const btn = document.querySelector(`[data-cat="${cat}"]`);
-                if (btn) { selectCat(btn, cat); return; }
+                if (btn) { activateCatBtn(btn); currentCat = cat; }
             }
             applyFilters();
         }
 
+        // ── COUNTS ──
         function updateCounts() {
-            const cats = ['all', 'Stationery', 'Office Supplies', 'Catering Services', 'Agro Products', 'Electronics & Electrical', 'Cosmology'];
-            cats.forEach(c => {
-                const el = document.getElementById('cnt-' + c);
-                if (el) el.textContent = c === 'all' ? allProducts.length : allProducts.filter(p => p.category === c).length;
+            document.getElementById('cnt-all').textContent = allProducts.length;
+            const map = {
+                'Stationery': 'cnt-Stationery',
+                'Office Supplies': 'cnt-Office-Supplies',
+                'Catering Services': 'cnt-Catering-Services',
+                'Agro Products': 'cnt-Agro-Products',
+                'Electronics & Electrical': 'cnt-Electronics',
+                'Cosmology': 'cnt-Cosmology',
+            };
+            Object.entries(map).forEach(([cat, id]) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = allProducts.filter(p => p.category === cat).length;
             });
         }
 
-        function selectCat(btn, cat) {
+        // ── CATEGORY BUTTONS ──
+        function activateCatBtn(btn) {
             document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            currentCat = cat;
-            page = 1;
-            applyFilters();
         }
 
+        document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activateCatBtn(btn);
+                currentCat = btn.dataset.cat;
+                page = 1;
+                applyFilters();
+            });
+        });
+
+        // ── FILTER + RENDER ──
         function applyFilters() {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const maxPrice = parseInt(document.getElementById('priceRange').value);
             const sort = document.getElementById('sortSelect').value;
 
-            document.getElementById('priceLabel').textContent = 'UGX ' + maxPrice.toLocaleString();
-
-            let filtered = allProducts.filter(p => {
-                const matchCat = currentCat === 'all' || p.category === currentCat;
-                const matchSearch = p.name.toLowerCase().includes(search) || p.category.toLowerCase().includes(search);
-                const matchPrice = p.price <= maxPrice;
-                return matchCat && matchSearch && matchPrice;
-            });
+            let filtered = allProducts.filter(p =>
+                currentCat === 'all' || p.category === currentCat
+            );
 
             if (sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
-            else if (sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
-            else if (sort === 'name-asc') filtered.sort((a, b) => a.name.localeCompare(b.name));
-
-            const paginated = filtered.slice(0, page * PER_PAGE);
-            const grid = document.getElementById('productsGrid');
+            if (sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
+            if (sort === 'name-asc') filtered.sort((a, b) => a.name.localeCompare(b.name));
 
             document.getElementById('resultCount').textContent = filtered.length;
 
+            const grid = document.getElementById('productsGrid');
+            const paginated = filtered.slice(0, page * PER_PAGE);
+
             if (!filtered.length) {
-                grid.innerHTML = `<div class="empty-state"><span class="icon">🔍</span><h3>No products found</h3><p>Try adjusting your filters or search term.</p></div>`;
-            } else {
-                grid.innerHTML = paginated.map(buildProductCard).join('');
-                setTimeout(initObserver, 50);
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <span class="icon">🔍</span>
+                        <h3>No products found</h3>
+                        <p>Try selecting a different category.</p>
+                    </div>`;
+                document.getElementById('loadMoreWrap').style.display = 'none';
+                renderActiveTags();
+                return;
             }
 
-            const lmw = document.getElementById('loadMoreWrap');
-            lmw.style.display = filtered.length > paginated.length ? 'block' : 'none';
+            grid.innerHTML = paginated.map(p => window.buildProductCard(p)).join('');
+            setTimeout(() => { if (window.initObserver) window.initObserver(); }, 50);
 
-            // Active filters display
+            document.getElementById('loadMoreWrap').style.display =
+                filtered.length > paginated.length ? 'block' : 'none';
+
+            renderActiveTags();
+        }
+
+        // ── ACTIVE FILTER TAGS ──
+        function renderActiveTags() {
             const af = document.getElementById('activeFilters');
             const tags = [];
-            if (currentCat !== 'all') tags.push(`<div class="filter-tag">${currentCat} <button onclick="selectCat(document.querySelector('[data-cat=all]'), 'all')">×</button></div>`);
-            if (search) tags.push(`<div class="filter-tag">Search: "${search}" <button onclick="document.getElementById('searchInput').value=''; applyFilters()">×</button></div>`);
+            if (currentCat !== 'all') {
+                tags.push(`<div class="filter-tag">${currentCat}
+                    <button id="removeCatTag">×</button></div>`);
+            }
             af.innerHTML = tags.join('');
+            document.getElementById('removeCatTag')?.addEventListener('click', () => {
+                activateCatBtn(document.querySelector('[data-cat="all"]'));
+                currentCat = 'all'; page = 1; applyFilters();
+            });
         }
 
-        function loadMore() { page++; applyFilters(); }
+        // ── LOAD MORE ──
+        document.getElementById('loadMoreBtn').addEventListener('click', () => {
+            page++; applyFilters();
+        });
 
-        function clearFilters() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('priceRange').value = 1000000;
+        // ── CLEAR FILTERS ──
+        document.getElementById('clearBtn').addEventListener('click', () => {
             document.getElementById('sortSelect').value = 'default';
-            selectCat(document.querySelector('[data-cat="all"]'), 'all');
-        }
+            activateCatBtn(document.querySelector('[data-cat="all"]'));
+            currentCat = 'all'; page = 1; applyFilters();
+        });
 
-        function setView(type) {
-            const grid = document.getElementById('productsGrid');
-            document.getElementById('gridBtn').classList.toggle('active', type === 'grid');
-            document.getElementById('listBtn').classList.toggle('active', type === 'list');
-            grid.classList.toggle('list-view', type === 'list');
-        }
+        // ── VIEW SWITCH ──
+        document.getElementById('gridBtn').addEventListener('click', () => {
+            document.getElementById('productsGrid').classList.remove('list-view');
+            document.getElementById('gridBtn').classList.add('active');
+            document.getElementById('listBtn').classList.remove('active');
+        });
+        document.getElementById('listBtn').addEventListener('click', () => {
+            document.getElementById('productsGrid').classList.add('list-view');
+            document.getElementById('listBtn').classList.add('active');
+            document.getElementById('gridBtn').classList.remove('active');
+        });
 
-        function initObserver() {
-            const obs = new IntersectionObserver(entries => {
-                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-            }, { threshold: 0.05 });
-            document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
-        }
+        // ── SORT CHANGE ──
+        document.getElementById('sortSelect').addEventListener('change', () => {
+            page = 1; applyFilters();
+        });
 
+        // ── KICK OFF ──
         loadProducts();
     </script>
+
 </body>
 
 </html>

@@ -483,7 +483,7 @@
         <div class="hero-gold-line"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-tag">Uganda's Premium Business Partner</div>
+                <!-- <div class="hero-tag">Uganda's Premium Business Partner</div> -->
                 <h1>Premium Office &<span>Lifestyle Solutions</span></h1>
                 <p>Samfa Investments Limited delivers exceptional quality across stationery, office supplies, catering,
                     agro products, electronics, and cosmology — empowering businesses and homes across Uganda.</p>
@@ -580,25 +580,25 @@
     </section>
 
     <!-- FEATURED PRODUCTS -->
-    <section class="products-section section-pad">
-        <div class="container">
-            <div
-                style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:56px">
-                <div>
-                    <div class="section-label">Handpicked For You</div>
-                    <h2 class="section-title">Featured Products</h2>
-                </div>
-                <a href="products.html" class="btn btn-outline btn-sm">View All Products →</a>
-            </div>
-            <div class="products-grid" id="featuredGrid">
-                <!-- Loaded by JS -->
-                <div class="skeleton" style="height:360px;border-radius:20px"></div>
-                <div class="skeleton" style="height:360px;border-radius:20px"></div>
-                <div class="skeleton" style="height:360px;border-radius:20px"></div>
-                <div class="skeleton" style="height:360px;border-radius:20px"></div>
-            </div>
+    <!-- <section class="products-section section-pad">
+    <div class="container">
+      <div
+        style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:56px">
+        <div>
+          <div class="section-label">Handpicked For You</div>
+          <h2 class="section-title">Featured Products</h2>
         </div>
-    </section>
+        <a href="products.html" class="btn btn-outline btn-sm">View All Products →</a>
+      </div>
+      <div class="products-grid" id="featuredGrid">
+        
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+        <div class="skeleton" style="height:360px;border-radius:20px"></div>
+      </div>
+    </div>
+  </section> -->
 
     <!-- PROMO BANNER -->
     <section class="promo-banner">
@@ -650,11 +650,30 @@
             </div>
         </div>
     </section>
+    <section class="products-section section-pad">
+        <div class="container">
+            <div
+                style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:56px">
+                <div>
+                    <div class="section-label">Handpicked For You</div>
+                    <h2 class="section-title">Featured Products</h2>
+                </div>
+                <a href="products.html" class="btn btn-outline btn-sm">View All Products →</a>
+            </div>
+            <div class="products-grid" id="featuredGrid">
+                <!-- Loaded by JS -->
+                <div class="skeleton" style="height:360px;border-radius:20px"></div>
+                <div class="skeleton" style="height:360px;border-radius:20px"></div>
+                <div class="skeleton" style="height:360px;border-radius:20px"></div>
+                <div class="skeleton" style="height:360px;border-radius:20px"></div>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer id="footer"></footer>
 
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script>
         // Load featured products
         async function loadFeatured() {
