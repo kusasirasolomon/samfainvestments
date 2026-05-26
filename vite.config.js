@@ -1,8 +1,15 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: './', // VERY IMPORTANT for deployment
     build: {
-        outDir: 'dist'
+        rollupOptions: {
+            input: {
+                main: 'index.html',
+                about: 'about.html',
+                contact: 'contact.html',
+                products: 'products.html',
+                services: 'services.html'
+            }
+        }
     }
 });
