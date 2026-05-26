@@ -4,149 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salon & Beauty – Samfa Investments Limited</title>
-    <meta name="description" content="Premium beauty, skincare, haircare & salon supplies in Uganda.">
+    <title>Salon | Samfa Investments</title>
     <link rel="stylesheet" href="css/global.css">
-    <style>
-        .salon-hero {
-            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1560066984-1387a8c2c4d7?w=1600&q=80') center/cover;
-            min-height: 70vh;
-        }
+    <link rel="stylesheet" href="css/stention.css">
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--radius-lg);
-        }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
+
     <header id="navbar"></header>
 
-    <!-- HERO -->
-    <section class="hero salon-hero">
-        <div class="container">
-            <div class="hero-content" style="max-width:680px;">
-                <div class="hero-tag">Luxury Beauty & Salon</div>
-                <h1 style="color:white;">Salon & Cosmology Solutions</h1>
-                <p style="color:rgba(255,255,255,0.85);">Premium haircare, skincare, cosmetics, and professional salon
-                    equipment.</p>
-                <div class="hero-cta">
-                    <a href="contact.html" class="btn btn-gold">Book a Service</a>
-                    <a href="products.html?cat=Cosmology" class="btn btn-outline">Shop Products</a>
-                </div>
+    <section class="container" style="padding:40px 20px;">
+        <h1 style="color:#C9A84C;">💇 Salon Services</h1>
+        <p style="color:#7D8590;margin-bottom:30px;">
+            Professional grooming, beauty, and styling services.
+        </p>
+
+        <!-- Images -->
+        <div class="products-grid">
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1" alt="Haircut">
+                <h3>Haircuts</h3>
+                <p>Modern and stylish cuts for men and women.</p>
             </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3" alt="Salon tools">
+                <h3>Professional Tools</h3>
+                <p>We use high-quality equipment for best results.</p>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519" alt="Hair styling">
+                <h3>Hair Styling</h3>
+                <p>Perfect styling for events and daily looks.</p>
+            </div>
+
         </div>
+
+        <!-- Video Section -->
+        <div style="margin-top:40px;">
+            <h2 style="color:#E6EDF3;">✂️ How We Work</h2>
+
+            <video controls style="width:100%;max-width:700px;border-radius:12px;margin-top:15px;">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support video.
+            </video>
+        </div>
+
+        <!-- Booking Button -->
+        <div style="margin-top:40px;">
+            <a href="contact.html" class="btn btn-gold"
+                style="padding:14px 24px;display:inline-block;text-decoration:none;">
+                Book a Service →
+            </a>
+        </div>
+
     </section>
 
-    <!-- SERVICES -->
-    <section class="section-pad" style="background:var(--ivory);">
-        <div class="container">
-            <div style="text-align:center; max-width:600px; margin:0 auto 60px;">
-                <h2 class="section-title">Our Salon Services</h2>
-            </div>
-            <div class="cats-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-                <div class="cat-card"><span class="cat-icon">✂️</span>
-                    <h3>Haircuts & Styling</h3>
-                    <p>Modern & classic styles</p>
-                </div>
-                <div class="cat-card"><span class="cat-icon">💆</span>
-                    <h3>Hair Treatment</h3>
-                    <p>Deep conditioning & repair</p>
-                </div>
-                <div class="cat-card"><span class="cat-icon">🧴</span>
-                    <h3>Skincare</h3>
-                    <p>Facials & glow treatments</p>
-                </div>
-                <div class="cat-card"><span class="cat-icon">💅</span>
-                    <h3>Nail Care</h3>
-                    <p>Manicure & Pedicure</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section class="section-pad" style="background:var(--cream);">
-        <div class="container">
-            <h2 style="text-align:center; margin-bottom:40px;">See Our Craftsmanship</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9wgxcq" title="Barber Haircut Process" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-            <p style="text-align:center; margin-top:20px; color:var(--text-muted);">Professional barbering & hair
-                transformation</p>
-        </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section class="products-section section-pad">
-        <div class="container">
-            <div
-                style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:56px">
-                <div>
-                    <div class="section-label">Beauty Collection</div>
-                    <h2 class="section-title">Featured Salon Products</h2>
-                </div>
-                <a href="products.html?cat=Cosmology" class="btn btn-outline btn-sm">View All →</a>
-            </div>
-            <div class="products-grid" id="salonGrid"></div>
-        </div>
-    </section>
-
-    <!-- BOOK CTA -->
-    <section class="promo-banner">
-        <div class="container">
-            <div class="promo-inner" style="text-align:center;">
-                <div>
-                    <h2 style="color:white;">Ready for a New Look?</h2>
-                    <p style="color:rgba(255,255,255,0.8); max-width:500px; margin:0 auto 30px;">Book professional salon
-                        services with our trusted partners.</p>
-                    <a href="contact.html" class="btn btn-gold">Book Appointment Now →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer id="footer"></footer>
 
-    <script type="module" src="js/main.js"></script>
-    <script>
-        import { getProducts } from './js/firebase-config.js';
-
-        async function loadSalonProducts() {
-            const grid = document.getElementById('salonGrid');
-            try {
-                let products = await getProducts();
-                const salonProducts = products.filter(p =>
-                    p.category === "Cosmology" ||
-                    p.category.toLowerCase().includes("beauty") ||
-                    p.category.toLowerCase().includes("salon")
-                ).slice(0, 6);
-
-                grid.innerHTML = salonProducts.length ?
-                    salonProducts.map(buildProductCard).join('') :
-                    `<p style="grid-column:1/-1;text-align:center;">Loading beauty products...</p>`;
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        loadSalonProducts();
-    </script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

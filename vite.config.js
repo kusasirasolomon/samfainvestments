@@ -9,6 +9,7 @@ export default defineConfig({
                 contact: 'contact.html',
                 products: 'products.html',
                 services: 'services.html'
+                admin: resolve(__dirname, 'admin/index3.html')
             }
         }
     }

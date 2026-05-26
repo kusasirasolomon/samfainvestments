@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationery – Samfa Investments</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0d1117, #1c2128);
+            padding: 120px 20px 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            opacity: 0.7;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 60px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .price {
+            color: #C9A84C;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 500px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="navbar"></header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Stationery Products</h1>
+        <p>High-quality office and school supplies for everyday use</p>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="products">
+        <div class="grid" id="productsGrid"></div>
+    </section>
+
+    <footer id="footer"></footer>
+
+    <script type="module">
+        import { getProducts, getSampleProducts } from './js/firebase-config.js';
+        import './js/main.js';
+
+        let allProducts = [];
+
+        async function loadProducts() {
+            try {
+                allProducts = await getProducts();
+            } catch {
+                allProducts = getSampleProducts();
+            }
+
+            // FILTER ONLY STATIONERY
+            const stationery = allProducts.filter(p => p.category === "Stationery");
+
+            renderProducts(stationery);
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+
+            if (!products.length) {
+                grid.innerHTML = "<p>No stationery products available.</p>";
+                return;
+            }
+
+            grid.innerHTML = products.map(p => `
+        <div class="card">
+            <img src="${p.image || 'https://via.placeholder.com/400'}">
+            <div class="card-body">
+                <h3>${p.name}</h3>
+                <p>${p.description || ''}</p>
+                <div class="price">UGX ${Number(p.price).toLocaleString()}</div>
+            </div>
+        </div>
+    `).join('');
+        }
+
+        loadProducts();
+    </script>
+
+</body>
+
+</html>
