@@ -1,16 +1,17 @@
-import { defineConfig } from 'vite';
+const { defineConfig } = require('vite')
+const path = require('path')
 
-export default defineConfig({
+module.exports = defineConfig({
     build: {
         rollupOptions: {
             input: {
-                main: 'index.html',
-                about: 'about.html',
-                contact: 'contact.html',
-                products: 'products.html',
-                services: 'services.html',
-                admin: resolve(__dirname, 'admin/index3.html')
+                main: path.resolve(__dirname, 'index.html'),
+                about: path.resolve(__dirname, 'about.html'),
+                contact: path.resolve(__dirname, 'contact.html'),
+                products: path.resolve(__dirname, 'products.html'),
+                services: path.resolve(__dirname, 'services.html'),
+                admin: path.resolve(__dirname, 'admin/index3.html')
             }
         }
     }
-});
+})
