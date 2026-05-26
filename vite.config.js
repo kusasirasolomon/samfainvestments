@@ -8,7 +8,7 @@ export default defineConfig({
                 about: 'about.html',
                 contact: 'contact.html',
                 products: 'products.html',
-                services: 'services.html'
+                services: 'services.html',
                 admin: resolve(__dirname, 'admin/index3.html')
             }
         }
