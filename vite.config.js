@@ -12,7 +12,9 @@ module.exports = defineConfig({
                 services: path.resolve(__dirname, 'services.html'),
                 admin: path.resolve(__dirname, 'admin/index.html'),
                 stationery: path.resolve(__dirname, 'stationery.html'),
-                salon: path.resolve(__dirname, 'salon.html')
+                salon: path.resolve(__dirname, 'salon.html'),
+                logo: path.resolve(__dirname, 'logo.png')
+
             }
         }
     }
