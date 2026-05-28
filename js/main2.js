@@ -484,8 +484,7 @@ function buildNavbar() {
     el.innerHTML = `
     <div class="container nav-inner">
         <a href="index.html" class="nav-logo">
-           
-            <img src="public/logo.png" alt="Samfa Investments Logo" class="logo-icon">
+            <div class="logo-icon">💼</div>
             <div class="logo-text">
                 <strong>Samfa Investments</strong>
                 <span>Limited</span>
@@ -494,11 +493,11 @@ function buildNavbar() {
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="products.html">Products</a>
+            <a href="stationery.html">Stationery</a>
+            <a href="salon.html">Salon</a>
             <a href="services.html">Services</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
-            <a href="stationery.html">Stationery</a>
-            <a href="salon.html">Salon</a>
         </nav>
         <div class="nav-actions">
             <button class="cart-btn" onclick="openCart()" title="Cart" aria-label="Open cart">
@@ -522,7 +521,8 @@ function buildNavbar() {
             flex-direction:column;gap:0;border-bottom:1px solid rgba(201,168,76,0.2)`;
         const links = [
             ['index.html', 'Home'], ['products.html', 'Products'],
-            ['services.html', 'Services'], ['about.html', 'About'], ['contact.html', 'Contact'], ['stationery.html', 'Stationery'], ['salon.html', 'Salon']
+            ['stationery.html', 'Stationery'], ['salon.html', 'Salon'],
+            ['services.html', 'Services'], ['about.html', 'About'], ['contact.html', 'Contact']
         ];
         mm.innerHTML = links.map(([href, label]) =>
             `<a href="${href}" style="color:#E6EDF3;font-size:15px;padding:14px 0;
@@ -624,7 +624,3 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     setTimeout(window.initObserver, 100);
 });
-
-
-
-

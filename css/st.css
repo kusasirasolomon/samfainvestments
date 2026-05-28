@@ -1,0 +1,410 @@
+/* ============================================================
+   SAMFA SALON - PREMIUM MODERN STYLE
+   ============================================================ */
+
+:root {
+    --primary-color: #C9A84C;
+    --secondary-color: #0A0A0A;
+    --background-color: #F5F1E8;
+    --white: #ffffff;
+    --text-color: #444;
+    --radius: 12px;
+    --transition: all 0.3s ease;
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Heading styles */
+h1,
+h2,
+h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* ==================== HEADER ==================== */
+.main-header {
+    background-color: var(--secondary-color);
+    padding: 20px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.logo-icon {
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.main-nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav .active {
+    color: var(--primary-color);
+}
+
+/* Button */
+.primary-cta {
+    background-color: var(--primary-color);
+    padding: 12px 25px;
+    border-radius: var(--radius);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.primary-cta:hover {
+    background-color: #a8842f;
+    transform: translateY(-2px);
+}
+
+/* ==================== HERO ==================== */
+.about-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9') center/cover no-repeat;
+    padding: 150px 20px;
+    text-align: center;
+    color: var(--white);
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ==================== Cards (Mission, Vision, Values) ==================== */
+.mission-vision {
+    padding: 80px 20px;
+    background-color: #fff;
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.mission-card,
+.vision-card,
+.values-card {
+    background: #fafafa;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.mission-card:hover,
+.vision-card:hover,
+.values-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== Our Story ==================== */
+.our-story {
+    padding: 80px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+
+.story-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.story-text {
+    max-width: 600px;
+}
+
+.story-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.story-text p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ==================== Impact Stats ==================== */
+.impact-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 1 1 150px;
+    text-align: center;
+}
+
+.stat-item h4 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* ==================== Video Sections ==================== */
+.video-section {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.video-wrapper {
+    margin-top: 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: var(--radius);
+}
+
+/* ==================== Team ==================== */
+.team-contact-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.team-contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 20px;
+    text-align: center;
+}
+
+.team-member:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: 15px;
+}
+
+.team-role {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ==================== Gallery ==================== */
+.impact-gallery {
+    padding: 80px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.impact-gallery h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* ==================== CTA ==================== */
+.about-cta {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.about-cta .primary-cta {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+}
+
+/* ==================== Footer ==================== */
+.main-footer {
+    background-color: var(--secondary-color);
+    color: #aaa;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ==================== Responsive ==================== */
+@media(max-width: 1024px) {
+
+    /* Adjust header padding */
+    .main-header {
+        padding: 15px 20px;
+    }
+
+    /* Reduce hero font size */
+    .about-hero h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media(max-width: 768px) {
+
+    /* Stack header elements if needed */
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Hero text */
+    .about-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Adjust grid layouts */
+    .mission-vision-grid,
+    .team-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Impact stats layout */
+    .impact-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media(max-width: 480px) {
+
+    /* Smaller font sizes for mobile */
+    .about-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Adjust iframe height for smaller screens */
+    iframe {
+        height: 250px;
+    }
+
+    /* Padding adjustments for sections */
+    .section {
+        padding: 40px 20px;
+    }
+}

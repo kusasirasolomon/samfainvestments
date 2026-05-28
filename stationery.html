@@ -4,176 +4,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stationery – Samfa Investments</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Stationery – Samfa Investments Limited</title>
+    <meta name="description"
+        content="Premium stationery products — notebooks, pens, office paper and more from Samfa Investments Limited, Uganda.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/global.css">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* HERO */
-        .hero {
-            background: linear-gradient(135deg, #0d1117, #1c2128);
-            padding: 120px 20px 60px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-
-        .hero p {
-            opacity: 0.7;
-        }
-
-        /* PRODUCTS */
-        .products {
-            padding: 60px 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 15px;
-        }
-
-        .card h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .card p {
-            font-size: 13px;
-            color: #555;
-        }
-
-        .price {
-            color: #C9A84C;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        /* RESPONSIVE */
-        @media(max-width: 900px) {
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width: 500px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/stationary.css">
+    
+       
 </head>
 
 <body>
 
     <header id="navbar"></header>
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-gold-line"></div>
-        <div class="container">
-            <div class="hero-content">
-                <!-- <div class="hero-tag">Uganda's Premium Business Partner</div> -->
-                <h1>Premium Office &<span>Lifestyle Solutions</span></h1>
-                <p>Samfa Investments Limited delivers exceptional quality across stationery, office supplies, catering,
-                    agro products, electronics, and cosmology — empowering businesses and homes across Uganda.</p>
-                <div class="hero-cta">
-                    <a href="products.html" class="btn btn-gold">Shop Now →</a>
-                    <a href="services.html" class="btn btn-outline">Explore Services</a>
+
+    <!-- HERO -->
+    <section class="stat-hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <!-- <div class="breadcrumb">
+                    <a href="index.html">Home</a><span>/</span>
+                    <a href="products.html">Products</a><span>/</span>
+                    <span>Stationery</span>
+                </div> -->
+                <!-- <div class="hero-tag">✏️ Premium Stationery</div> -->
+                <h1>Write, Create &<span> Inspire</span></h1>
+                <p>Discover Uganda's finest collection of stationery — from executive notebooks to precision writing
+                    instruments. Everything your office, school, or home needs to stay organized and productive.</p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn-gold">Shop Stationery →</a>
+                    <a href="contact.html" class="btn-outline-w">Bulk Orders</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat reveal">
+                    <strong>200+</strong>
+                    <span>Stationery Items</span>
+                </div>
+                <div class="hero-stat reveal">
+                    <strong>50+</strong>
+                    <span>Trusted Brands</span>
+                </div>
+                <div class="hero-stat reveal">
+                    <strong>100%</strong>
+                    <span>Quality Checked</span>
+                </div>
+                <div class="hero-stat reveal">
+                    <strong>24h</strong>
+                    <span>Fast Delivery</span>
+                </div>
+                <div class="hero-stat reveal">
+                    <strong>Bulk</strong>
+                    <span>Discounts Available</span>
+                </div>
+                <div class="hero-stat reveal">
+                    <strong>★ 4.9</strong>
+                    <span>Customer Rating</span>
                 </div>
             </div>
         </div>
-        <div class="hero-scroll">
-            <span>Scroll</span>
-            <span>↓</span>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <div class="features-strip">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feat-item reveal">
+                    <div class="feat-icon">✍️</div>
+                    <div>
+                        <h4>Premium Writing</h4>
+                        <p>Smooth, long-lasting pens & pencils</p>
+                    </div>
+                </div>
+                <div class="feat-item reveal">
+                    <div class="feat-icon">📦</div>
+                    <div>
+                        <h4>Bulk Pricing</h4>
+                        <p>Special rates for schools & offices</p>
+                    </div>
+                </div>
+                <div class="feat-item reveal">
+                    <div class="feat-icon">🚚</div>
+                    <div>
+                        <h4>Fast Delivery</h4>
+                        <p>Nationwide across Uganda</p>
+                    </div>
+                </div>
+                <div class="feat-item reveal">
+                    <div class="feat-icon">🏆</div>
+                    <div>
+                        <h4>Quality Assured</h4>
+                        <p>Only certified premium products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <!-- <section class="cats-section">
+        <div class="container">
+            <div style="text-align:center">
+                <div class="section-label">Browse By Type</div>
+                <h2 class="section-title">Stationery <span>Categories</span></h2>
+                <p class="section-sub" style="margin: 12px auto 0">From writing essentials to presentation tools — we
+                    stock everything you need.</p>
+            </div>
+            <div class="cats-grid" style="margin-top:48px">
+                <div class="cat-card reveal">
+                    <span class="cat-icon">🖊️</span>
+                    <h3>Writing Instruments</h3>
+                    <p>Pens, pencils, markers & highlighters</p>
+                </div>
+                <div class="cat-card reveal">
+                    <span class="cat-icon">📓</span>
+                    <h3>Notebooks & Pads</h3>
+                    <p>Journals, exercise books & notepads</p>
+                </div>
+                <div class="cat-card reveal">
+                    <span class="cat-icon">📎</span>
+                    <h3>Office Accessories</h3>
+                    <p>Clips, staplers, tape & scissors</p>
+                </div>
+                <div class="cat-card reveal">
+                    <span class="cat-icon">🗂️</span>
+                    <h3>Filing & Storage</h3>
+                    <p>Folders, binders & document holders</p>
+                </div>
+                <div class="cat-card reveal">
+                    <span class="cat-icon">🖨️</span>
+                    <h3>Printing Paper</h3>
+                    <p>A4, A3 & specialty paper stock</p>
+                </div>
+                <div class="cat-card reveal">
+                    <span class="cat-icon">✂️</span>
+                    <h3>Art & Craft</h3>
+                    <p>Drawing tools & craft supplies</p>
+                </div>
+                <div class="cat-card reveal">
+                    <span class="cat-icon">🗃️</span>
+                    <h3>Envelopes & Mailers</h3>
+                    <p>All sizes for every mailing need</p>
+                </div>
+                <div class="cat-card reveal">
+                    <span class="cat-icon">🔖</span>
+                    <h3>Labels & Stickers</h3>
+                    <p>Address, colour & custom labels</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- WHY CHOOSE US -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-img reveal">
+                    <img src="https://res.cloudinary.com/dupeojmpy/image/upload/v1779966118/STANT2_lptjjr.png"
+                        alt="Stationery workspace">
+                    <div class="why-img-badge">
+                        <strong>10+</strong>
+                        <span>Years supplying Uganda</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="section-label">Why Samfa</div>
+                    <h2 class="section-title">Your Trusted <span>Stationery</span> Partner</h2>
+                    <p style="color:#666;font-size:15px;line-height:1.8;margin:16px 0 8px">
+                        From single items to bulk institutional orders, we supply schools, corporates, and government
+                        offices across Uganda with premium stationery at competitive prices.
+                    </p>
+                    <div class="why-points" style="margin-top:28px">
+                        <div class="why-point reveal">
+                            <div class="why-point-icon">🏫</div>
+                            <div>
+                                <h4>School & Institutional Supply</h4>
+                                <p>We supply in bulk to schools, universities, and government offices at special rates.
+                                    One order, everything delivered.</p>
+                            </div>
+                        </div>
+                        <div class="why-point reveal">
+                            <div class="why-point-icon">💼</div>
+                            <div>
+                                <h4>Corporate Account Management</h4>
+                                <p>Set up a monthly stationery account for your business — we manage restocking so you
+                                    never run out.</p>
+                            </div>
+                        </div>
+                        <div class="why-point reveal">
+                            <div class="why-point-icon">✅</div>
+                            <div>
+                                <h4>Quality Guarantee</h4>
+                                <p>Every item is inspected before dispatch. Not satisfied? We offer a full replacement
+                                    guarantee.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BULK PROMO -->
+    <section class="promo-section">
+        <div class="container">
+            <div class="promo-inner">
+                <div class="promo-badge reveal">15%<small>OFF</small></div>
+                <div class="promo-content reveal">
+                    <h2>Bulk Orders Get 15% Off Everything</h2>
+                    <p>Order 10 or more of any stationery item and automatically qualify for our bulk discount. Perfect
+                        for schools, offices, and institutions stocking up for the term or year.</p>
+                    <a href="contact.html" class="btn-gold">Request Bulk Quote →</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Stationery Products</h1>
-        <p>High-quality office and school supplies for everyday use</p>
+    <!-- PRODUCTS -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="products-header">
+                <div>
+                    <div class="section-label">Our Collection</div>
+                    <h2 class="section-title">Stationery <span>Products</span></h2>
+                </div>
+                <a href="products.html?cat=Stationery"
+                    style="font-size:13px;color:var(--gold);font-weight:600;text-decoration:none">View All →</a>
+            </div>
+            <div class="products-grid" id="statProductsGrid">
+                <div class="skeleton" style="height:320px"></div>
+                <div class="skeleton" style="height:320px"></div>
+                <div class="skeleton" style="height:320px"></div>
+                <div class="skeleton" style="height:320px"></div>
+            </div>
+        </div>
     </section>
 
-    <!-- CONTENT -->
-    <section class="products">
-        <div class="grid" id="productsGrid"></div>
-    </section>
+    
 
     <footer id="footer"></footer>
-    <script type="module" src="js/main.js"></script>
-   
 
     <script type="module">
         import { getProducts, getSampleProducts } from './js/firebase-config.js';
         import './js/main.js';
 
-        let allProducts = [];
-
-        async function loadProducts() {
+        async function loadStationeryProducts() {
+            let products = [];
             try {
-                allProducts = await getProducts();
+                const all = await getProducts();
+                products = all.filter(p => p.category === 'Stationery');
             } catch {
-                allProducts = getSampleProducts();
+                products = getSampleProducts().filter(p => p.category === 'Stationery');
             }
 
-            // FILTER ONLY STATIONERY
-            const stationery = allProducts.filter(p => p.category === "Stationery");
-
-            renderProducts(stationery);
-        }
-
-        function renderProducts(products) {
-            const grid = document.getElementById('productsGrid');
+            window._samfaProducts = products;
+            const grid = document.getElementById('statProductsGrid');
 
             if (!products.length) {
-                grid.innerHTML = "<p>No stationery products available.</p>";
+                grid.innerHTML = `<div class="empty-state"><span class="icon">📦</span><h3>No stationery products yet</h3><p>Check back soon or browse all products.</p></div>`;
                 return;
             }
 
-            grid.innerHTML = products.map(p => `
-        <div class="card">
-            <img src="${p.image || 'https://via.placeholder.com/400'}">
-            <div class="card-body">
-                <h3>${p.name}</h3>
-                <p>${p.description || ''}</p>
-                <div class="price">UGX ${Number(p.price).toLocaleString()}</div>
-            </div>
-        </div>
-    `).join('');
+            grid.innerHTML = products.map(p => window.buildProductCard(p)).join('');
+            setTimeout(() => { if (window.initObserver) window.initObserver(); }, 50);
         }
 
-        loadProducts();
+        loadStationeryProducts();
     </script>
 
 </body>

@@ -1,0 +1,292 @@
+/* ============================================================
+   SAMFA SALON - FULL PAGE STYLING
+   ============================================================ */
+
+:root {
+    --gold: #C9A84C;
+    --dark: #0A0A0A;
+    --cream: #F5F1E8;
+    --white: #ffffff;
+    --text: #444;
+    --radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* ================================================= HEADER */
+.main-header {
+    background: var(--dark);
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.logo-icon {
+    background: var(--gold);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    color: #ccc;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.main-nav a:hover,
+.main-nav .active {
+    color: var(--gold);
+}
+
+/* BUTTON */
+.primary-cta {
+    background: var(--gold);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.primary-cta:hover {
+    background: #a8842f;
+}
+
+/* ================================================= HERO */
+.about-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9') center/cover;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* ================================================= CARDS */
+.mission-vision {
+    padding: 80px 0;
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.mission-card,
+.vision-card,
+.values-card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.mission-card:hover,
+.vision-card:hover,
+.values-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================================= STORY */
+.our-story {
+    padding: 80px 0;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+/* STATS */
+.impact-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.stat-item h4 {
+    color: var(--gold);
+    font-size: 24px;
+}
+
+/* ================================================= VIDEO */
+.video-section {
+    background: var(--dark);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.video-wrapper {
+    margin-top: 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* ================================================= TEAM */
+.team-contact-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-member {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.team-role {
+    color: var(--gold);
+}
+
+/* ================================================= GALLERY */
+.impact-gallery {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.gallery-item img:hover {
+    transform: scale(1.1);
+}
+
+/* ================================================= CTA */
+.about-cta {
+    background: var(--gold);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+/* ================================================= FOOTER */
+.main-footer {
+    background: var(--dark);
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* ================================================= RESPONSIVE */
+@media (max-width: 900px) {
+
+    .mission-vision-grid,
+    .team-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .story-content {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .mission-vision-grid,
+    .team-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .impact-stats {
+        flex-direction: column;
+    }
+
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+}
