@@ -485,7 +485,7 @@ function buildNavbar() {
     <div class="container nav-inner">
         <a href="index.html" class="nav-logo">
            
-            <img src="public/logo.png" alt="Samfa Investments Logo" class="logo-icon">
+            <img src="https://res.cloudinary.com/dupeojmpy/image/upload/v1779972481/logo1_pbvy48.png" alt="Samfa Investments Logo" class="logo-icon">
             <div class="logo-text">
                 <strong>Samfa Investments</strong>
                 <span>Limited</span>
