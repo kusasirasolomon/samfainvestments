@@ -13,7 +13,7 @@ module.exports = defineConfig({
                 admin: path.resolve(__dirname, 'admin/index.html'),
                 stationery: path.resolve(__dirname, 'stationery.html'),
                 salon: path.resolve(__dirname, 'salon.html'),
-                logo: path.resolve(__dirname, 'logo.png')
+                
 
             }
         }
