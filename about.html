@@ -70,6 +70,32 @@
             object-fit: cover;
             border-radius: var(--radius-lg);
         }
+        .team-img {
+           width: 100%;
+           height: 320px;
+            overflow: hidden;
+        }
+
+        /* .team-img img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             display: block;
+        } */
+        /* .team-img {
+           width: 100%;
+           height: 250px;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+        } */
+
+
+        /* .team-img img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover; 
+             display: block;
+        }  */
 
         .story-img-accent {
             position: absolute;
@@ -252,7 +278,7 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 28px;
             margin-top: 60px;
         }
@@ -270,13 +296,18 @@
             box-shadow: var(--shadow-md);
         }
 
-        .team-img {
+        /* .team-img {
             height: 240px;
             background: var(--cream);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 80px;
+        } */
+        .team-member img {
+             width: 100%;
+             height: 100%;
+              object-fit: contain;
         }
 
         .team-body {
@@ -310,6 +341,46 @@
         .reveal.visible {
             opacity: 1;
             transform: none;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            inset: 0;
+
+    
+             /* display: flex; */
+             align-items: center;
+             justify-content: center;
+
+             background: rgba(0,0,0,0.6);
+             padding: 20px; /* prevents edge overflow on small screens */
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+
+    
+            max-height: 80vh;        /* limits height */
+            overflow-y: auto;        /* enables scrolling */
+
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 12px;
+            position: relative;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 26px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         @media (max-width: 900px) {
@@ -502,35 +573,84 @@
             </div>
             <div class="team-grid">
                 <div class="team-card reveal">
-                    <div class="team-img">👨‍💼</div>
+                    <div class="team-img">
+                        <img src="https://res.cloudinary.com/dupeojmpy/image/upload/v1781256706/executive_c6ccqw.png"
+                            alt="Executive Director">
+                    </div>
                     <div class="team-body">
-                        <h4>Samuel Mwesigwa</h4>
-                        <p>Founder & CEO</p>
-                        <span>Leading Samfa's vision and strategic growth since inception.</span>
+                        <h4>Waiswa Samilu</h4>
+                        <p>Executive director</p>
+                        
+                        <button class="btn btn-gold" id="openModalBtn">Read Message</button>
                     </div>
                 </div>
                 <div class="team-card reveal">
-                    <div class="team-img">👩‍💼</div>
+                    <div class="team-img"><img src="https://res.cloudinary.com/dupeojmpy/image/upload/v1781237795/managingdirector1_nbx1pn.jpg"></div>
                     <div class="team-body">
-                        <h4>Fatuma Nakato</h4>
-                        <p>Head of Operations</p>
+                        <h4>Fazira</h4>
+                        <p>Managing director</p>
                         <span>Ensuring seamless logistics and delivery across all sectors.</span>
                     </div>
                 </div>
-                <div class="team-card reveal">
-                    <div class="team-img">👨‍💻</div>
-                    <div class="team-body">
-                        <h4>Alex Kabugo</h4>
-                        <p>Sales & Business Development</p>
-                        <span>Building partnerships and growing our client portfolio nationwide.</span>
-                    </div>
-                </div>
+              
             </div>
         </div>
     </section>
 
     <footer id="footer"></footer>
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
     
+            <h2>Executive Statement</h2>
+            <p>
+                Welcome to Samfa Investments Limited.<br><br>
+    
+                At Samfa Investments Limited, we are committed to delivering dependable, innovative, and value-driven
+                solutions that contribute to sustainable growth and community transformation. Our mission is built on
+                integrity, professionalism, excellence, and long-term partnerships with our clients, stakeholders, and
+                communities.<br><br>
+    
+                Since our establishment, we have continuously focused on providing quality products and services while
+                embracing innovation and operational efficiency in every sector we serve. We believe that true success is
+                measured not only by business growth, but also by the positive impact we create for society.<br><br>
+    
+                As Executive Director, I take pride in the dedication of our team and the trust our clients place in us. We
+                remain committed to maintaining high standards, creating opportunities, and expanding our footprint through
+                strategic investments and customer-centered service delivery.<br><br>
+    
+                We appreciate your interest in Samfa Investments Limited and invite you to partner with us as we continue
+                building a future founded on excellence, reliability, and shared prosperity.<br><br>
+    
+                <strong>Waiswa Samilu</strong><br>
+                Executive Director<br>
+                Samfa Investments Limited
+            </p>
+        </div>
+    </div>
+    <script>
+     
+    document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("messageModal");
+            const openBtn = document.getElementById("openModalBtn");
+            const closeBtn = document.querySelector(".close-btn");
+
+            openBtn.addEventListener("click", () => {
+                    modal.style.display = "flex";
+            });
+
+            closeBtn.addEventListener("click", () => {
+                    modal.style.display = "none";
+            });
+
+              // OPTIONAL: close when clicking outside
+            window.addEventListener("click", (e) => {
+                  if (e.target === modal) {
+                    modal.style.display = "none";
+            }
+          });
+    }); 
+    </script>
     <script type="module" src="js/main.js"></script>
 </body>
 

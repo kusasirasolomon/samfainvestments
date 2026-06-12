@@ -219,7 +219,7 @@ window.openOrderForm = function () {
 
             <form id="orderForm" onsubmit="submitOrder(event)">
                 <!-- Web3Forms access key — replace with your own from web3forms.com -->
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="access_key" value="a646e374-04cb-47c4-b7e5-4822f574dfe1">
                 <input type="hidden" name="subject" value="New Order — Samfa Investments">
                 <input type="hidden" name="order_details" value="${itemsList.replace(/"/g, '&quot;')}">
                 <input type="hidden" name="order_total" value="UGX ${total.toLocaleString()}">
@@ -485,7 +485,7 @@ function buildNavbar() {
     <div class="container nav-inner">
         <a href="index.html" class="nav-logo">
            
-            <img src="https://res.cloudinary.com/dupeojmpy/image/upload/v1779972481/logo1_pbvy48.png" alt="Samfa Investments Logo" class="logo-icon">
+            <img src="https://res.cloudinary.com/dupeojmpy/image/upload/v1781089711/logosamfa_ngyk9g.png" alt="Samfa Investments Logo" class="logo-icon">
             <div class="logo-text">
                 <strong>Samfa Investments</strong>
                 <span>Limited</span>
